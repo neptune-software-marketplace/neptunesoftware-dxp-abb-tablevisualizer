@@ -1,0 +1,103 @@
+{
+	"id": "405A932E-033F-ED11-A27C-A04A5EBC99B7",
+	"createdAt": "2022-09-28T07:57:22.750Z",
+	"createdBy": "kristin.eliassen@neptune-software.com",
+	"git": {
+		"targetServers": [],
+		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-tablevisualizer",
+		"testServers": [],
+		"packageJSON": [
+			"==OBJECT STRING==",
+			"{",
+			"  \"name\": \"com.neptune-software.pt.apps.tableVisualizer\",",
+			"  \"version\": \"1.0.0\",",
+			"  \"description\": \"com.neptune-software.pt.apps.tableVisualizer\",",
+			"  \"author\": \"Neptune Software\",",
+			"  \"license\": \"LicenseRef-LICENSE\",",
+			"  \"private\": true,",
+			"  \"scripts\": {",
+			"    \"deploy\": \"ts-node src/deploy.ts\",",
+			"    \"test\": \"jest --passWithNoTests\"",
+			"  },",
+			"  \"engines\": {",
+			"    \"node\": \"14.16.0\"",
+			"  },",
+			"  \"devDependencies\": {",
+			"    \"@types/jest\": \"^26.0.23\",",
+			"    \"typescript\": \"^4.2.3\",",
+			"    \"ts-node\": \"^10.0.0\",",
+			"    \"axios\": \"^0.21.1\",",
+			"    \"jest\": \"^27.0.4\",",
+			"    \"ts-jest\": \"^27.0.3\"",
+			"  }",
+			"}",
+			""
+		]
+	},
+	"name": "com.neptune-software.pt.apps.tableVisualizer",
+	"description": null,
+	"ver": "22.9.28.85",
+	"enableCICD": true,
+	"apps": [
+		{
+			"id": "4DA7883B-AA39-ED11-A27C-E42AAC61C092",
+			"application": "antvx6_test_kristin",
+			"title": "",
+			"description": ""
+		}
+	],
+	"api": [
+		{
+			"id": "63F961DF-453A-ED11-A27C-E42AAC61C092",
+			"name": "tableVisualizer",
+			"description": null,
+			"apiGroup": null
+		}
+	],
+	"odataSource": [],
+	"odataMock": [],
+	"dictionary": [],
+	"jsclass": [
+		{
+			"id": "E9491518-B439-ED11-A27C-E42AAC61C092",
+			"name": "tableToVisualizer",
+			"description": null
+		},
+		{
+			"id": "11C1AE57-8D3D-ED11-A27C-E42AAC61C092",
+			"name": "getPackages",
+			"description": null
+		}
+	],
+	"jsscript_group": [
+		{
+			"id": "92882A1C-DC0C-ED11-B47A-28187880D3E8",
+			"name": "TableVisualizer",
+			"description": null
+		}
+	],
+	"theme": [],
+	"pdf": [],
+	"rulesengine": [],
+	"reports": [],
+	"api_authentication": [],
+	"api_group": [],
+	"tile": [],
+	"category": [],
+	"launchpad": [
+		{
+			"id": "9D3C670A-AF39-ED11-A27C-E42AAC61C092",
+			"name": "table_visual_container",
+			"description": null
+		}
+	],
+	"certificates": [],
+	"role": [],
+	"systems": [],
+	"doc": [],
+	"wf_notifications": [],
+	"department": [],
+	"script_scheduler": [],
+	"wf_definition": [],
+	"connector": []
+}
