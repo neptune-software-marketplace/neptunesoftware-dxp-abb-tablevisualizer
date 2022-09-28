@@ -36,7 +36,7 @@
 	},
 	"name": "com.neptune-software.pt.apps.tableVisualizer",
 	"description": null,
-	"ver": "22.9.28.85",
+	"ver": "22.9.28.86",
 	"enableCICD": true,
 	"apps": [
 		{
