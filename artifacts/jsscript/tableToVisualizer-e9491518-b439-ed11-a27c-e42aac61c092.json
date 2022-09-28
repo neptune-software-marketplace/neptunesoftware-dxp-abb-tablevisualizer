@@ -14,7 +14,7 @@
 	"entitySets": [],
 	"apis": [],
 	"name": "tableToVisualizer",
-	"ver": "22.9.28.856",
+	"ver": "22.9.28.1222",
 	"description": null,
 	"content": [
 		"==OBJECT STRING==",
@@ -63,7 +63,7 @@
 		"                    text: \"id\",",
 		"                },",
 		"                portTypeLabel: {",
-		"                    text: \"text\",",
+		"                    text: \"uuid\",",
 		"                },",
 		"                portPrimaryKey: {",
 		"                    text: 'P'",

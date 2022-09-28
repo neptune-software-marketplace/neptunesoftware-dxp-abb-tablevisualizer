@@ -40,8 +40,8 @@
 	"enableCICD": true,
 	"apps": [
 		{
-			"id": "4DA7883B-AA39-ED11-A27C-E42AAC61C092",
-			"application": "antvx6_test_kristin",
+			"id": "7FB6E07C-2E3F-ED11-A27C-A04A5EBC99B7",
+			"application": "datamodeller_v1",
 			"title": "",
 			"description": ""
 		}
