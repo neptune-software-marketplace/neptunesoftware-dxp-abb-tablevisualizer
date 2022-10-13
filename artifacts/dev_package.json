@@ -59,6 +59,11 @@
 	"dictionary": [],
 	"jsclass": [
 		{
+			"id": "742E84C9-F342-ED11-819B-000D3ABA7EDC",
+			"name": "getRelatedTables",
+			"description": null
+		},
+		{
 			"id": "E9491518-B439-ED11-A27C-E42AAC61C092",
 			"name": "tableToVisualizer",
 			"description": null

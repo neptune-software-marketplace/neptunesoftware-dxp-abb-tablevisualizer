@@ -53,6 +53,23 @@
 				}
 			],
 			"serverScript": "11C1AE57-8D3D-ED11-A27C-E42AAC61C092"
+		},
+		{
+			"id": "02922736-23BA-4DC7-AA9E-3B44BED92CFF",
+			"method": "POST",
+			"path": "/getRelatedTables",
+			"description": "",
+			"parameters": [],
+			"headers": [],
+			"responses": [
+				{
+					"status": "200",
+					"description": "OK",
+					"headers": [],
+					"body": []
+				}
+			],
+			"serverScript": "742E84C9-F342-ED11-819B-000D3ABA7EDC"
 		}
 	],
 	"definitions": [
@@ -1061,7 +1078,7 @@
 	"documentation": [],
 	"name": "tableVisualizer",
 	"endpoint": "/api/serverscript/tablevisualizer",
-	"ver": "22.9.28.759",
+	"ver": "22.10.3.821",
 	"version": null,
 	"description": null,
 	"mediaType": null,
