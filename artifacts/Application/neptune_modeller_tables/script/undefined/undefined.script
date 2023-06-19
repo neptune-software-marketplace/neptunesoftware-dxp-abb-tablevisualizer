@@ -1,0 +1,3 @@
+.listScrollContainer {
+  max-height: 450px;
+}

@@ -1,0 +1,170 @@
+{
+	"id": "7e99a724-63e6-4693-a355-4c3b90e7f777",
+	"createdAt": "2023-06-12T12:14:57.882Z",
+	"createdBy": "kristin.eliassen@neptune-software.com",
+	"objects": [
+		{
+			"fieldNo": "e7c40805-02dd-4daf-f159-0ae599557658",
+			"fieldName": "oHTMLContainerGraph",
+			"fieldParent": 0,
+			"fieldType": "sap.ui.core.HTML",
+			"script": "",
+			"customComponent": false,
+			"request": [],
+			"response": [],
+			"attributes": [],
+			"data": [
+				{
+					"fieldNo": "43ad6ab8-500e-4a68-d003-05f08659fbfe",
+					"fieldName": "oHTMLGraph",
+					"fieldParent": "e7c40805-02dd-4daf-f159-0ae599557658",
+					"fieldType": "neptune.Html",
+					"script": "file://script/neptune.Html/oHTMLGraph.script",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": []
+				}
+			]
+		},
+		{
+			"fieldNo": 99999,
+			"data": [
+				{
+					"fieldNo": "1362ea9a-0a31-4d05-f58d-f9edd3c5948a",
+					"fieldName": "x6Script",
+					"fieldParent": 99999,
+					"fieldType": "neptune_modeller_script",
+					"script": "",
+					"customComponent": true,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": []
+				},
+				{
+					"fieldNo": "d3c34991-e253-4fcb-b96f-a9530e6a13be",
+					"fieldName": "namespace",
+					"fieldParent": 99999,
+					"fieldType": "neptune.Typescript",
+					"script": "file://script/neptune.Typescript/namespace.ts",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [
+						{
+							"attribute": "isUnique",
+							"grouping": "Properties",
+							"value": "true",
+							"script": "",
+							"translation": []
+						}
+					],
+					"data": []
+				},
+				{
+					"fieldNo": "5899a6c2-e2f8-4bce-f299-7f76577f068a",
+					"fieldName": "Types",
+					"fieldParent": 99999,
+					"fieldType": "neptune.Typescript",
+					"script": "file://script/neptune.Typescript/Types.ts",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": []
+				}
+			]
+		},
+		{
+			"fieldNo": 99998,
+			"data": []
+		}
+	],
+	"componentInterface": {
+		"icon": null,
+		"documentation": "",
+		"containerId": null,
+		"attributes": [
+			{
+				"id": "6c58f2fa-c00d-43c3-cb56-08406d19375c",
+				"objectType": "group",
+				"attribute": {
+					"ATTRIBUTE": "HTMLGraphContainer",
+					"GROUPING": ""
+				}
+			},
+			{
+				"id": "44bfa5d3-05df-4890-8fec-51e11c85311c",
+				"objectType": "attribute",
+				"fieldId": "e7c40805-02dd-4daf-f159-0ae599557658",
+				"parent": "6c58f2fa-c00d-43c3-cb56-08406d19375c",
+				"attribute": {
+					"ATTRIBUTE": "afterRendering",
+					"GROUPING": "HTMLGraphContainer",
+					"PARENT": "HTMLGraphContainer"
+				},
+				"original": {
+					"FIELD_ID": "e7c40805-02dd-4daf-f159-0ae599557658",
+					"ATTRIBUTE": "afterRendering",
+					"VALUE_TABLE": 0,
+					"GROUPING": "Events",
+					"PARENT": "Events",
+					"SHOW_LABEL": false,
+					"DEFAULT": "",
+					"ENABLE_VALUES": false,
+					"VALUEHELPONLY": false,
+					"SCRIPT_ICON": "sap-icon://document-text",
+					"SHOW_SCRIPT": true,
+					"ENABLE_SCRIPT": false
+				},
+				"fieldType": "sap.ui.core.HTML"
+			}
+		],
+		"topLevelObjects": [
+			"sap.ui.core.HTML"
+		]
+	},
+	"ver": "23.6.19.1624",
+	"application": "neptune_modeller_graph",
+	"title": "",
+	"description": "",
+	"enableFileStorage": false,
+	"enableManifest": false,
+	"enableStylesheet": true,
+	"enableObfuscate": false,
+	"onlyRunLaunchpad": false,
+	"disabled": false,
+	"loadLaunchpadCode": null,
+	"loadApplicationCode": null,
+	"appType": "E",
+	"ui5_m": false,
+	"ui5_f": false,
+	"ui5_table": false,
+	"ui5_tnt": false,
+	"ui5_uxap": false,
+	"ui5_chart": false,
+	"ui5_theme": "sap_horizon",
+	"ui5_version": "",
+	"ui5_language": null,
+	"ui5_url": "",
+	"cus_theme": "",
+	"css": "file:///css.css",
+	"compiledCss": "file://script/undefined/undefined.script",
+	"header": "<script src=\"https://unpkg.com/@antv/x6@1.7/dist/x6.js\"></script>",
+	"manifest": "",
+	"globalScript": null,
+	"deleted": false,
+	"libHighchart": false,
+	"libHighmap": false,
+	"publicAccess": false,
+	"ui5_bootstrap": false,
+	"ui5_ionic": false,
+	"useV2AppHandler": false,
+	"compilerTarget": 3,
+	"tabWidth": null,
+	"printWidth": null,
+	"apis": [],
+	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
+}

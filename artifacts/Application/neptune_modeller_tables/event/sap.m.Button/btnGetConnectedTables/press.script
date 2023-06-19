@@ -1,0 +1,3 @@
+const selectedTable = Tables.getSelectedIds()[0];
+CustomComponent.getConnectedTables(selectedTable);
+diaTables.close();

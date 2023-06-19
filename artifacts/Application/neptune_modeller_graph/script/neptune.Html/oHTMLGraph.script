@@ -1,0 +1,4 @@
+<div id="mainGraphContainer" >
+    <div id="graphContainer" ></div>
+    <div id='minimapContainer'></div>
+</div>

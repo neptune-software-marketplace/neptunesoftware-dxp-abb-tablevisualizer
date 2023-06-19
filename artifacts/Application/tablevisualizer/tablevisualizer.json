@@ -1,0 +1,877 @@
+{
+	"id": "c14231e7-a557-437c-9d96-b19e1a5f10a9",
+	"createdAt": "2023-06-14T13:16:35.798Z",
+	"createdBy": "kristin.eliassen@neptune-software.com",
+	"objects": [
+		{
+			"fieldNo": "c2f11bb1-5f91-42cd-c393-cbc905d2659a",
+			"fieldName": "App",
+			"fieldParent": 0,
+			"fieldType": "sap.m.App",
+			"script": "",
+			"customComponent": false,
+			"request": [],
+			"response": [],
+			"attributes": [],
+			"data": [
+				{
+					"fieldNo": "9488f51d-c4e1-44d0-bcad-4990854ece4c",
+					"fieldName": "pageTableModeller",
+					"fieldParent": "c2f11bb1-5f91-42cd-c393-cbc905d2659a",
+					"fieldType": "sap.m.Page",
+					"script": "",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": [
+						{
+							"fieldNo": "c731ae9d-0ea3-4d8a-ca22-9f021907bf52",
+							"fieldName": "headerTableModeller",
+							"fieldParent": "9488f51d-c4e1-44d0-bcad-4990854ece4c",
+							"fieldType": "sap.m.Bar",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "position",
+									"grouping": "Parent",
+									"value": "setCustomHeader",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "d0d73b07-d76a-4348-d380-ae271f6f645f",
+									"fieldName": "Left",
+									"fieldParent": "c731ae9d-0ea3-4d8a-ca22-9f021907bf52",
+									"fieldType": "neptune.BarContent",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "position",
+											"grouping": "Parent",
+											"value": "ContentLeft",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "27d39c46-e19b-4844-e4fc-9b77844b6b44",
+											"fieldName": "headerTitle",
+											"fieldParent": "d0d73b07-d76a-4348-d380-ae271f6f645f",
+											"fieldType": "sap.m.Title",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "titleStyle",
+													"grouping": "Properties",
+													"value": "H3",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Data Modeller",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "styleClassMargin",
+													"grouping": "Properties",
+													"value": "sapUiSmallMarginBeginEnd",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "74ce6d41-ddf0-4d3a-9c23-6806191c9776",
+											"fieldName": "btnGetTables",
+											"fieldParent": "d0d73b07-d76a-4348-d380-ae271f6f645f",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Select",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/database",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "tableModeller.openDialog();",
+													"script": "tableModeller.openDialog();",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "2a96bff0-a9d2-40ed-dc07-cffde28141c5",
+											"fieldName": "btnInfo",
+											"fieldParent": "d0d73b07-d76a-4348-d380-ae271f6f645f",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/info",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "popoverInfo.openBy(this)",
+													"script": "popoverInfo.openBy(this)",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								},
+								{
+									"fieldNo": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+									"fieldName": "Middle",
+									"fieldParent": "c731ae9d-0ea3-4d8a-ca22-9f021907bf52",
+									"fieldType": "neptune.BarContent",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "position",
+											"grouping": "Parent",
+											"value": "ContentMiddle",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "17ee61b1-0551-471e-8658-589f408867c4",
+											"fieldName": "ToolbarSeparator",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.ToolbarSeparator",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": []
+										},
+										{
+											"fieldNo": "d49d5c7f-3689-4e4f-8b72-a2ba9452e404",
+											"fieldName": "btnUndo",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/undo",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "tableModeller.undo();",
+													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "977808b8-011f-4550-9678-13d72d3b1f2d",
+											"fieldName": "btnRedo",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/redo",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "tableModeller.redo();",
+													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "7ca2cce9-c4f4-464e-c001-43efab816603",
+											"fieldName": "btnCenterContent",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Center content",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/map-pin",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "tableModeller.centerContent();",
+													"script": "tableModeller.centerContent();",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "b3485541-6e1a-4be4-b9be-27f3486c31a0",
+											"fieldName": "btnClearGraph",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Clear",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/eraser",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "tableModeller.clearGraph();",
+													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								},
+								{
+									"fieldNo": "31aa28ca-1d50-4778-e9a0-e52b7908ca06",
+									"fieldName": "Right",
+									"fieldParent": "c731ae9d-0ea3-4d8a-ca22-9f021907bf52",
+									"fieldType": "neptune.BarContent",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "position",
+											"grouping": "Parent",
+											"value": "ContentRight",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "378b854f-9a35-4de3-c007-f9eba9c1ae84",
+											"fieldName": "btnHideMinimap",
+											"fieldParent": "31aa28ca-1d50-4778-e9a0-e52b7908ca06",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Hide minimap",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-regular/square",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "file://event/sap.m.Button/btnHideMinimap/press.js",
+													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "0232551c-cc1a-4aac-82e5-9b75aed26084",
+											"fieldName": "btnShowMinimap",
+											"fieldParent": "31aa28ca-1d50-4778-e9a0-e52b7908ca06",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "visible",
+													"grouping": "Properties",
+													"value": "false",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Show minimap",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/square",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "file://event/sap.m.Button/btnShowMinimap/press.js",
+													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"fieldNo": "206e0233-6607-44ba-e030-bef20e692df3",
+							"fieldName": "panelDiagram",
+							"fieldParent": "9488f51d-c4e1-44d0-bcad-4990854ece4c",
+							"fieldType": "sap.m.Panel",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "height",
+									"grouping": "Properties",
+									"value": "100%",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "10941cdf-6101-4d80-b704-477d419a5a87",
+									"fieldName": "tableModeller",
+									"fieldParent": "206e0233-6607-44ba-e030-bef20e692df3",
+									"fieldType": "neptune_modeller_tables",
+									"script": "",
+									"customComponent": true,
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"fieldNo": 99999,
+			"data": [
+				{
+					"fieldNo": "4c9cb094-28f2-446f-e574-079be158f6c3",
+					"fieldName": "popoverInfo",
+					"fieldParent": 99999,
+					"fieldType": "sap.m.Popover",
+					"script": "",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [
+						{
+							"attribute": "title",
+							"grouping": "Properties",
+							"value": "Tips and tricks",
+							"script": "",
+							"translation": []
+						},
+						{
+							"attribute": "placement",
+							"grouping": "Properties",
+							"value": "Bottom",
+							"script": "",
+							"translation": []
+						}
+					],
+					"data": [
+						{
+							"fieldNo": "5fac44e8-72f6-4d9f-8696-3df6defcc0cb",
+							"fieldName": "VBox",
+							"fieldParent": "4c9cb094-28f2-446f-e574-079be158f6c3",
+							"fieldType": "sap.m.VBox",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "width",
+									"grouping": "Properties",
+									"value": "300px",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "styleClassMargin",
+									"grouping": "Properties",
+									"value": "sapUiSmallMargin",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "renderType",
+									"grouping": "Properties",
+									"value": "Bare",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "cebded5e-952e-497b-a899-a4da35ee8064",
+									"fieldName": "HBoxMoveTable",
+									"fieldParent": "5fac44e8-72f6-4d9f-8696-3df6defcc0cb",
+									"fieldType": "sap.m.HBox",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "styleClassMargin",
+											"grouping": "Properties",
+											"value": "sapUiSmallMarginBottom",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "renderType",
+											"grouping": "Properties",
+											"value": "Bare",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "justifyContent",
+											"grouping": "Properties",
+											"value": "SpaceBetween",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "0d844bb4-504e-4a19-8b50-5d3966cc04d4",
+											"fieldName": "textMoveWhat",
+											"fieldParent": "cebded5e-952e-497b-a899-a4da35ee8064",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Move table",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "99db170d-0c3d-4656-9e7f-9e4d0b3ce5d9",
+											"fieldName": "textMoveHow",
+											"fieldParent": "cebded5e-952e-497b-a899-a4da35ee8064",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Hold and drag",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								},
+								{
+									"fieldNo": "6ad30e10-0d45-4968-fc26-30a0b3fe71a9",
+									"fieldName": "HBoxZoom",
+									"fieldParent": "5fac44e8-72f6-4d9f-8696-3df6defcc0cb",
+									"fieldType": "sap.m.HBox",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "styleClassMargin",
+											"grouping": "Properties",
+											"value": "sapUiSmallMarginBottom",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "renderType",
+											"grouping": "Properties",
+											"value": "Bare",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "justifyContent",
+											"grouping": "Properties",
+											"value": "SpaceBetween",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "c1b6a289-858e-4716-8e69-3918dd941e26",
+											"fieldName": "textZoomWhat",
+											"fieldParent": "6ad30e10-0d45-4968-fc26-30a0b3fe71a9",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Zoom in/out",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "c59f0411-5474-4f55-d661-2e4fa4f0ec1b",
+											"fieldName": "textZoomHow",
+											"fieldParent": "6ad30e10-0d45-4968-fc26-30a0b3fe71a9",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Ctrl/cmd + mousewheel",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								},
+								{
+									"fieldNo": "3a69b00d-1744-4953-d002-b99f9d6ef753",
+									"fieldName": "HBoxPanning",
+									"fieldParent": "5fac44e8-72f6-4d9f-8696-3df6defcc0cb",
+									"fieldType": "sap.m.HBox",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "renderType",
+											"grouping": "Properties",
+											"value": "Bare",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "justifyContent",
+											"grouping": "Properties",
+											"value": "SpaceBetween",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": [
+										{
+											"fieldNo": "8ad59b71-25c9-4207-9099-55966fe76278",
+											"fieldName": "textPanWhat",
+											"fieldParent": "3a69b00d-1744-4953-d002-b99f9d6ef753",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Move the canvas",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "9949b10d-f7b4-4b7d-8f7b-61ad22cb4367",
+											"fieldName": "textPanHow",
+											"fieldParent": "3a69b00d-1744-4953-d002-b99f9d6ef753",
+											"fieldType": "sap.m.Text",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Hold and drag",
+													"script": "",
+													"translation": []
+												}
+											],
+											"data": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"fieldNo": "707f5ef6-ace3-4a42-cbc9-8979ba71df55",
+					"fieldName": "Scripts",
+					"fieldParent": 99999,
+					"fieldType": "neptune.folder",
+					"script": "",
+					"customComponent": false,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": [
+						{
+							"fieldNo": "0cf7a162-c26b-4dc2-bf77-7d7ff4d14c64",
+							"fieldName": "Init",
+							"fieldParent": "707f5ef6-ace3-4a42-cbc9-8979ba71df55",
+							"fieldType": "neptune.Typescript",
+							"script": "file://script/neptune.Typescript/Scripts/Init.ts",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
+							"fieldNo": "d41b027f-8a29-4796-929e-37d4bcdfedc1",
+							"fieldName": "Types",
+							"fieldParent": "707f5ef6-ace3-4a42-cbc9-8979ba71df55",
+							"fieldType": "neptune.Typescript",
+							"script": "file://script/neptune.Typescript/Scripts/Types.ts",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"fieldNo": 99998,
+			"data": []
+		}
+	],
+	"componentInterface": [],
+	"ver": "23.6.19.1532",
+	"application": "tablevisualizer",
+	"title": "",
+	"description": "",
+	"enableFileStorage": false,
+	"enableManifest": false,
+	"enableStylesheet": false,
+	"enableObfuscate": false,
+	"onlyRunLaunchpad": false,
+	"disabled": false,
+	"loadLaunchpadCode": null,
+	"loadApplicationCode": null,
+	"appType": "A",
+	"ui5_m": true,
+	"ui5_f": false,
+	"ui5_table": false,
+	"ui5_tnt": false,
+	"ui5_uxap": false,
+	"ui5_chart": false,
+	"ui5_theme": "sap_horizon",
+	"ui5_version": "",
+	"ui5_language": null,
+	"ui5_url": "",
+	"cus_theme": "",
+	"css": "",
+	"compiledCss": "file://script/undefined/undefined.script",
+	"header": "",
+	"manifest": "",
+	"globalScript": null,
+	"deleted": false,
+	"libHighchart": false,
+	"libHighmap": false,
+	"publicAccess": false,
+	"ui5_bootstrap": false,
+	"ui5_ionic": false,
+	"useV2AppHandler": false,
+	"compilerTarget": 3,
+	"tabWidth": null,
+	"printWidth": null,
+	"apis": [],
+	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
+}

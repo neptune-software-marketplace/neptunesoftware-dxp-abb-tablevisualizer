@@ -1,0 +1,5 @@
+const context = oEvent.oSource.getBindingContext("PopoverMenu");  
+
+const data = context.getObject();
+
+data.action();
