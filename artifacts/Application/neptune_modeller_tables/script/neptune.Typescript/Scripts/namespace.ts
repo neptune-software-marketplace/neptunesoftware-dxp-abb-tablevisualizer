@@ -17,7 +17,6 @@ namespace CustomComponent {
     }
 
     function openTableMenu(e, x, y, node, view) {
-        console.log({e, x, y, node, view});
         const nodeHTMLElement = document.getElementById(`node-${node.id}`);
         modelPopoverMenu.setData(tableMenuActions);
         modelPopoverMenu.refresh();
