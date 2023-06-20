@@ -11,7 +11,7 @@
 	"categoryID": null,
 	"sort": null,
 	"urlApplication": null,
-	"actionApplication": "tablevisualizer",
+	"actionApplication": "datamodeller",
 	"actionParameters": null,
 	"actionURL": null,
 	"openDialog": false,
@@ -34,7 +34,7 @@
 	"hideTileTablet": false,
 	"enableDocumentation": false,
 	"navObject": "Datamodeller",
-	"navAction": "TableVisualizer",
+	"navAction": "Datamodeller",
 	"dialogWidth": null,
 	"dialogHeight": null,
 	"tileApplicationStyleClass": null,
@@ -56,9 +56,9 @@
 	"helpText": null,
 	"helpEnabled": false,
 	"openClickTile": false,
-	"ver": "23.6.19.1630",
+	"ver": "23.6.20.105",
 	"actionWebApp": null,
-	"name": "DataModellerTableVisualizer",
+	"name": "DataModeller",
 	"cardWidth": null,
 	"cardHeight": null,
 	"cardHeightFit": false,
@@ -77,5 +77,11 @@
 	"actionType": "A",
 	"cockpitTile": true,
 	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7",
-	"roles": []
+	"roles": [
+		{
+			"id": "7ce84102-81c3-4ba7-a14d-fd0e255a89d0",
+			"name": "neptunesoftware-datamodeller",
+			"ver": "23.6.20.102"
+		}
+	]
 }

@@ -4,12 +4,12 @@
 	"createdBy": "kristin.eliassen@neptune-software.com",
 	"git": {
 		"targetServers": [],
-		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-tablevisualizer",
+		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-datamodeller",
 		"testServers": []
 	},
 	"name": "com.neptune-software.pt.apps.tableVisualizer",
 	"description": null,
-	"ver": "23.6.14.1514",
+	"ver": "23.6.20.108",
 	"enableCICD": true,
 	"apps": [
 		{
@@ -35,6 +35,12 @@
 			"application": "neptune_modeller_script",
 			"title": "",
 			"description": ""
+		},
+		{
+			"id": "2c046191-f0b3-46dc-936a-7102a8cde845",
+			"application": "datamodeller",
+			"title": "",
+			"description": ""
 		}
 	],
 	"api": [],
@@ -53,13 +59,19 @@
 		{
 			"id": "50aceafc-bf81-4bbd-b9db-8d2945490d93",
 			"description": "Visualize table definitions and foreign key connections",
-			"name": "DataModellerTableVisualizer"
+			"name": "DataModeller"
 		}
 	],
 	"category": [],
 	"launchpad": [],
 	"certificates": [],
-	"role": [],
+	"role": [
+		{
+			"id": "7ce84102-81c3-4ba7-a14d-fd0e255a89d0",
+			"name": "neptunesoftware-datamodeller",
+			"description": null
+		}
+	],
 	"systems": [],
 	"doc": [],
 	"wf_notifications": [],
@@ -71,8 +83,8 @@
 	"media_library": [
 		{
 			"id": "323d04d7-6a58-460a-991f-6527bcbd7fef",
-			"updatedAt": "2023-06-14T13:15:45.612Z",
-			"name": "tablevisualizer",
+			"updatedAt": "2023-06-20T08:03:09.164Z",
+			"name": "datamodeller",
 			"parent": null,
 			"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
 		}

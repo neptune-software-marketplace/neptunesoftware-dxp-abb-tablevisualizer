@@ -267,6 +267,12 @@ namespace TableModeller {
         },
         allowBlank: false,
         allowNode: false,
+        allowLoop: false,
+        allowEdge: false,
+        validateConnection: function (this, args) {
+            if (args.sourceCell === args.targetCell) return false
+            return true
+        }
     };
 
 }

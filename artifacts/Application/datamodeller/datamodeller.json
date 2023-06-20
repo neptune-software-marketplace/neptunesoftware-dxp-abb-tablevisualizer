@@ -1,6 +1,6 @@
 {
-	"id": "c14231e7-a557-437c-9d96-b19e1a5f10a9",
-	"createdAt": "2023-06-14T13:16:35.798Z",
+	"id": "2c046191-f0b3-46dc-936a-7102a8cde845",
+	"createdAt": "2023-06-20T08:04:23.569Z",
 	"createdBy": "kristin.eliassen@neptune-software.com",
 	"objects": [
 		{
@@ -833,8 +833,8 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.6.20.952",
-	"application": "tablevisualizer",
+	"ver": "23.6.20.104",
+	"application": "datamodeller",
 	"title": "",
 	"description": "",
 	"enableFileStorage": false,
@@ -858,7 +858,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "",
-	"compiledCss": "file://script/undefined/undefined.script",
+	"compiledCss": null,
 	"header": "",
 	"manifest": "",
 	"globalScript": null,

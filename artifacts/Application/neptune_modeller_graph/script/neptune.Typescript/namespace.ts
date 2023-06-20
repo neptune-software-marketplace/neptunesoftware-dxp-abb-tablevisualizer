@@ -80,6 +80,8 @@ namespace CustomComponent {
             //@ts-ignore
             new MiniMap({
                 container: minimapContainer,
+                scalable: false,
+                minScale: 5,
             })
         );
 

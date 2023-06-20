@@ -336,7 +336,7 @@
 														{
 															"attribute": "icon",
 															"grouping": "Properties",
-															"value": "sap-icon://fa-solid/window-close",
+															"value": "sap-icon://decline",
 															"script": "",
 															"translation": []
 														},
@@ -368,6 +368,13 @@
 											"attribute": "selectedKey",
 											"grouping": "Properties",
 											"value": "tables",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "expandable",
+											"grouping": "Properties",
+											"value": "false",
 											"script": "",
 											"translation": []
 										},
@@ -1944,7 +1951,7 @@
 														{
 															"attribute": "type",
 															"grouping": "Properties",
-															"value": "Transparent",
+															"value": "Emphasized",
 															"script": "",
 															"translation": []
 														},
@@ -2002,6 +2009,13 @@
 							"attribute": "showHeader",
 							"grouping": "Properties",
 							"value": "false",
+							"script": "",
+							"translation": []
+						},
+						{
+							"attribute": "placement",
+							"grouping": "Properties",
+							"value": "PreferredRightOrFlip",
 							"script": "",
 							"translation": []
 						},
@@ -2681,7 +2695,7 @@
 			"sap.m.HBox"
 		]
 	},
-	"ver": "23.6.19.1642",
+	"ver": "23.6.20.953",
 	"application": "neptune_modeller_tables",
 	"title": "",
 	"description": "",

@@ -2,6 +2,7 @@ const tableMenuActions = [
     {
         text: "Hide table from view",
         action: () => {
+            //@ts-ignore
             const tableId = textSourceId.getText();
             CustomComponent.removeCells([tableId]);
         },
@@ -11,6 +12,7 @@ const tableMenuActions = [
         text: "Definition",
         action: () => {
             let path = "/cockpit.html#tools-tabledefinition";
+            //@ts-ignore
             const tableId = textSourceId.getText();
 
             if (tableId) {
@@ -25,14 +27,15 @@ const tableMenuActions = [
                 path += `&${parameters}`;
             }
 
-            sap.m.URLHelper.redirect(path, true);
+            sap.m.URLHelper.redirect(path, false);
         },
         icon: "sap-icon://fa-regular/folder-open",
     },
-    {
+    /* {
         text: "Data Browser",
         action: () => {
             let path = "/cockpit.html#tools-tablebrowser";
+            //@ts-ignore
             const tableId = textSourceId.getText();
 
             if (tableId) {
@@ -47,8 +50,8 @@ const tableMenuActions = [
                 path += `&${parameters}`;
             }
 
-            sap.m.URLHelper.redirect(path, true);
+            sap.m.URLHelper.redirect(path, false);
         },
         icon: "sap-icon://fa-regular/folder-open",
-    },
+    }, */
 ];
