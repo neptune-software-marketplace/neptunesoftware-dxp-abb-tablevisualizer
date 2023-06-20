@@ -134,7 +134,7 @@ namespace TableModeller {
 
                             formattedLink.attrs = {
                                 line: {
-                                    stroke: "#a2b1c3",
+                                    stroke: 'var(--nepHighlightColor)',
                                     strokeWidth: 2,
                                 },
                             };
@@ -166,8 +166,8 @@ namespace TableModeller {
         attrs: {
             rect: {
                 strokeWidth: 1,
-                stroke: "#F6B21F",
-                fill: "#F6B21F",
+                stroke: 'var(--nepBrandYellow)',
+                fill: 'var(--nepBrandYellow)',
             },
             label: {
                 fontWeight: "bold",
@@ -201,8 +201,8 @@ namespace TableModeller {
                             width: NODE_WIDTH,
                             height: LINE_HEIGHT,
                             strokeWidth: 1,
-                            stroke: "#F6B21F",
-                            fill: "#EFF4FF",
+                            stroke: 'var(--nepBrandYellow)',
+                            fill: '#eff1f2',
                             magnet: true,
                         },
                         portNameLabel: {
@@ -239,7 +239,7 @@ namespace TableModeller {
         inherit: "edge",
         attrs: {
             line: {
-                stroke: "#A2B1C3",
+                stroke: 'var(--nepHighlightColor)',
                 strokeWidth: 2,
             },
         },
@@ -272,6 +272,17 @@ namespace TableModeller {
         validateConnection: function (this, args) {
             if (args.sourceCell === args.targetCell) return false
             return true
+        },
+        createEdge() {
+            return graphCore.graph.createEdge({
+                shape: 'edge',
+                attrs: {
+                    line: {
+                        stroke: 'var(--nepHighlightColor)',
+                        strokeWidth: 2,
+                    }
+                }
+            })
         }
     };
 

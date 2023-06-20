@@ -9,7 +9,7 @@ if (selectedTables.length === 1) {
 const selected = [];
 
 selectedTables.forEach(table => {
-    const context = table.getBindingContext();
+    const context = table.getBindingContext('AllTables');
     var tableData = context.getObject();
     selected.push(tableData);
 });

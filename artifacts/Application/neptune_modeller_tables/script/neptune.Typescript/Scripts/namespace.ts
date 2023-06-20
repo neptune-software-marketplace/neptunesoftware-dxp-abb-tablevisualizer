@@ -38,9 +38,9 @@ namespace CustomComponent {
             tableData.push(table);
         }
         const tables = Array.isArray(tableData) ? tableData : [tableData];
-        modelNeptuneTables.setData(tables);
+        modelSelectedTablesNeptune.setData(tables);
         const formattedData = TableModeller.formatTablesToX6(tables);
-        modelFormattedTables.setData(formattedData);
+        modelSelectedTablesFormatted.setData(formattedData);
         graphCore.addCells(formattedData);
     }
 
@@ -66,8 +66,8 @@ namespace CustomComponent {
 
     export function clearGraph() {
         graphCore.clearGraph();
-        modelFormattedTables.setData([]);
-        modelNeptuneTables.setData([]);
+        modelSelectedTablesFormatted.setData([]);
+        modelSelectedTablesNeptune.setData([]);
     }
 
     export function undo() {
@@ -88,5 +88,15 @@ namespace CustomComponent {
 
     export function removeCells(nodeIds: string[]) {
         graphCore.removeCells(nodeIds);
+    }
+
+    export async function refreshSelection() {
+        graphCore.clearGraph();
+        graphCore.addCells(modelSelectedTablesFormatted.getData());
+    }
+
+    export function hasSelection() {
+        const selectedTables = modelSelectedTablesFormatted.getData();
+        return selectedTables.length > 0;
     }
 }

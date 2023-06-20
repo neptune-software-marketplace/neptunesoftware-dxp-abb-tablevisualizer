@@ -1,17 +1,17 @@
 namespace Tables {
     export async function listTablesPackages() {
-        const tableData = await getTableList();
-        const allTables: NeptuneTable[] = tableData.dictionary;
-        const allPackages = await getPackageList();
+        const data = await getTableList();
 
-        allTables.forEach((table) => {
-            const tablePackageIndex = allPackages.findIndex((x) => x.id === table.package);
-            if (tablePackageIndex === -1) return;
-            if (!allPackages[tablePackageIndex].hasOwnProperty("tables")) {
-                allPackages[tablePackageIndex].tables = [];
-            }
-            allPackages[tablePackageIndex].tables.push(table);
-        });
+        const allTables: NeptuneTable[] = data.dictionary;
+        const allPackages = data.package;
+
+        allTables
+            .filter((table) => allPackages.some((package) => package.id === table.package))
+            .forEach((table) => {
+                const package = allPackages.find((package) => package.id === table.package);
+                package.tables = package.tables || [];
+                package.tables.push(table);
+            });
 
         const packagesWithTables = allPackages
             .filter((x) => x.tables)
@@ -28,25 +28,19 @@ namespace Tables {
                 return 0;
             });
 
-        modeltableTables.setData(allTables);
-        modeltableTables.setSizeLimit(1000);
-        tabTables.setCount(allTables.length.toString());
+        modelAllTables.setData(allTables);
+        modelAllPackages.setData(packagesWithTables);
 
         segmentedBtnSort.setSelectedKey("changedOn");
         segmentedButtonUpdated.firePress();
-
-        modelPackageTables.setData(packagesWithTables);
-        tabPackages.setCount(packagesWithTables.length.toString());
     }
 
     export function getSelectedIds(): string[] {
         let selectedTables = tableTables.getSelectedItems();
         const tableIds = [];
 
-        const getItemDetails = (selectedItem) => {
-            const context = selectedItem.getBindingContext();
-            return context.getObject();
-        };
+        const getItemDetails = (selectedItem) =>
+            selectedItem.getBindingContext("AllTables").getObject();
 
         if (selectedTables.length) {
             selectedTables.forEach((table) => {
@@ -59,7 +53,7 @@ namespace Tables {
         if (!selectedTables.length) {
             const selectedPackage = listPackages.getSelectedItem();
             if (selectedPackage) {
-                const context = selectedPackage.getBindingContext('PackageTables');
+                const context = selectedPackage.getBindingContext("AllPackages");
                 const data = context.getObject();
                 //@ts-ignore
                 const packageTables = data.tables;
@@ -79,25 +73,18 @@ namespace Tables {
     }
 
     export function resetSelection(currentTab = "all") {
-        const resetPackageTab = () => {
-            listPackages.removeSelections(true);
-            textSelectedPackage.setText("You haven't selected a package yet.");
-            textSelectedPackageDesc.setText("");
-            textSelectedPackageNumber.setText("");
-        };
-
-        const resetTableTab = () => {
+        if (currentTab === "packages") {
             tableTables.removeSelections(true);
             modellistSelectedTables.setData([]);
-        };
+        } else if (currentTab === "tables") {
+            listPackages.removeSelections(true);
+            listPackages.fireSelectionChange();
+        } else {
+            tableTables.removeSelections(true);
+            modellistSelectedTables.setData([]);
 
-        if (currentTab === "packages" || currentTab === 'all') {
-            resetTableTab();
+            listPackages.removeSelections(true);
+            listPackages.fireSelectionChange();
         }
-        
-        if (currentTab === "tables" || currentTab === 'all') {
-            resetPackageTab();
-        } 
-        
     }
 }

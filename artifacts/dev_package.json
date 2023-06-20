@@ -7,20 +7,14 @@
 		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-datamodeller",
 		"testServers": []
 	},
-	"name": "com.neptune-software.pt.apps.tableVisualizer",
+	"name": "neptunesoftware-dxp-abb-datamodeller",
 	"description": null,
-	"ver": "23.6.20.108",
+	"ver": "23.6.20.1010",
 	"enableCICD": true,
 	"apps": [
 		{
 			"id": "c8dd3176-877f-48de-aaa1-925681c5a730",
 			"application": "neptune_modeller_tables",
-			"title": "",
-			"description": ""
-		},
-		{
-			"id": "c14231e7-a557-437c-9d96-b19e1a5f10a9",
-			"application": "tablevisualizer",
 			"title": "",
 			"description": ""
 		},

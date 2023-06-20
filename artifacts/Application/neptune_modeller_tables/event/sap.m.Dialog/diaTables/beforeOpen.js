@@ -1,7 +1,7 @@
 Tables.listTablesPackages();
 
-const renderedTables = modelFormattedTables.getData();
-if (!modelFormattedTables.length) {
+const renderedTables = modelSelectedTablesFormatted.getData();
+if (!modelSelectedTablesFormatted.length) {
     Tables.resetSelection();
     tabDiaTables.setSelectedKey('tables');
 }

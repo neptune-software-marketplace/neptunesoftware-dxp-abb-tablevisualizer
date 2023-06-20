@@ -218,7 +218,7 @@
 												{
 													"attribute": "icon",
 													"grouping": "Properties",
-													"value": "sap-icon://fa-solid/undo",
+													"value": "sap-icon://undo",
 													"script": "",
 													"translation": []
 												},
@@ -253,7 +253,7 @@
 												{
 													"attribute": "icon",
 													"grouping": "Properties",
-													"value": "sap-icon://fa-solid/redo",
+													"value": "sap-icon://redo",
 													"script": "",
 													"translation": []
 												},
@@ -269,8 +269,20 @@
 											"data": []
 										},
 										{
-											"fieldNo": "7ca2cce9-c4f4-464e-c001-43efab816603",
-											"fieldName": "btnCenterContent",
+											"fieldNo": "d4b25c79-96eb-4750-ab73-e641a509e40d",
+											"fieldName": "ToolbarSeparator1",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.ToolbarSeparator",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": []
+										},
+										{
+											"fieldNo": "a3dddba6-f75e-4a75-95c6-bad1fdbd317d",
+											"fieldName": "btnRefresh",
 											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
 											"fieldType": "sap.m.Button",
 											"script": "",
@@ -288,22 +300,22 @@
 												{
 													"attribute": "text",
 													"grouping": "Properties",
-													"value": "Center content",
+													"value": "Reset view",
 													"script": "",
 													"translation": []
 												},
 												{
 													"attribute": "icon",
 													"grouping": "Properties",
-													"value": "sap-icon://fa-solid/map-pin",
+													"value": "sap-icon://refresh",
 													"script": "",
 													"translation": []
 												},
 												{
 													"attribute": "press",
 													"grouping": "Events",
-													"value": "tableModeller.centerContent();",
-													"script": "tableModeller.centerContent();",
+													"value": "Anonymous Function",
+													"script": "file://event/sap.m.Button/btnRefresh/press.script",
 													"translation": []
 												}
 											],
@@ -346,6 +358,47 @@
 													"value": "Anonymous Function",
 													"script": "tableModeller.clearGraph();",
 													"language": "javascript",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "7ca2cce9-c4f4-464e-c001-43efab816603",
+											"fieldName": "btnCenterContent",
+											"fieldParent": "7124a201-f743-4b8d-c8e2-72a7c25f32f1",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Center content",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://fa-solid/map-pin",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "tableModeller.centerContent();",
+													"script": "tableModeller.centerContent();",
 													"translation": []
 												}
 											],
@@ -833,7 +886,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.6.20.104",
+	"ver": "23.6.20.1357",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",

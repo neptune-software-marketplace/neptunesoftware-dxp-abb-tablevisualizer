@@ -1,3 +1,5 @@
 const selectedTables = Tables.getSelectedIds();
-CustomComponent.displayTables(selectedTables);
+if (selectedTables) {
+    CustomComponent.displayTables(selectedTables);
+}
 diaTables.close();

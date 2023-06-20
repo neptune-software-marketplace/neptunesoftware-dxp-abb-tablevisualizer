@@ -365,6 +365,13 @@
 									"response": [],
 									"attributes": [
 										{
+											"attribute": "styleClass",
+											"grouping": "Properties",
+											"value": "tabDiaTables",
+											"script": "",
+											"translation": []
+										},
+										{
 											"attribute": "selectedKey",
 											"grouping": "Properties",
 											"value": "tables",
@@ -415,7 +422,14 @@
 												{
 													"attribute": "icon",
 													"grouping": "Properties",
-													"value": "/media/root/tablevisualizer/tables_yellow.png",
+													"value": "/media/root/datamodeller/tables_black.png",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "count",
+													"grouping": "Properties",
+													"value": "{= ${AllTables>/}.length}",
 													"script": "",
 													"translation": []
 												}
@@ -783,9 +797,9 @@
 																			"fieldType": "sap.m.Table",
 																			"script": "",
 																			"customComponent": false,
-																			"bindingValue": "Generic Array",
 																			"bindingType": "h",
 																			"bindingSource": "P9",
+																			"modelPath": "AllTables>/",
 																			"request": [],
 																			"response": [],
 																			"attributes": [
@@ -822,6 +836,13 @@
 																					"attribute": "sticky",
 																					"grouping": "Properties",
 																					"value": "[\"ColumnHeaders\"]",
+																					"script": "",
+																					"translation": []
+																				},
+																				{
+																					"attribute": "setSizeLimit",
+																					"grouping": "Model",
+																					"value": "1000",
 																					"script": "",
 																					"translation": []
 																				}
@@ -1015,7 +1036,7 @@
 																								{
 																									"attribute": "text",
 																									"grouping": "Properties",
-																									"value": "{name}",
+																									"value": "{AllTables>name}",
 																									"script": "",
 																									"translation": []
 																								}
@@ -1035,7 +1056,7 @@
 																								{
 																									"attribute": "text",
 																									"grouping": "Properties",
-																									"value": "{description}",
+																									"value": "{AllTables>description}",
 																									"script": "",
 																									"translation": []
 																								}
@@ -1055,7 +1076,7 @@
 																								{
 																									"attribute": "text",
 																									"grouping": "Properties",
-																									"value": "{updatedAt}",
+																									"value": "{AllTables>updatedAt}",
 																									"script": "",
 																									"translation": []
 																								},
@@ -1082,7 +1103,7 @@
 																								{
 																									"attribute": "text",
 																									"grouping": "Properties",
-																									"value": "{createdBy}",
+																									"value": "{AllTables>createdBy}",
 																									"script": "",
 																									"translation": []
 																								}
@@ -1128,7 +1149,14 @@
 												{
 													"attribute": "icon",
 													"grouping": "Properties",
-													"value": "/media/root/tablevisualizer/packages_yellow.png",
+													"value": "/media/root/datamodeller/packages_black.png",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "count",
+													"grouping": "Properties",
+													"value": "{= ${AllPackages>/}.length}",
 													"script": "",
 													"translation": []
 												}
@@ -1384,7 +1412,7 @@
 																	"customComponent": false,
 																	"bindingType": "h",
 																	"bindingSource": "P9",
-																	"modelPath": "PackageTables>/",
+																	"modelPath": "AllPackages>/",
 																	"request": [],
 																	"response": [],
 																	"attributes": [
@@ -1503,7 +1531,7 @@
 																														{
 																															"attribute": "text",
 																															"grouping": "Properties",
-																															"value": "{PackageTables>name}",
+																															"value": "{AllPackages>name}",
 																															"script": "",
 																															"translation": []
 																														}
@@ -1523,7 +1551,7 @@
 																														{
 																															"attribute": "text",
 																															"grouping": "Properties",
-																															"value": "({= ${PackageTables>tables}.length})",
+																															"value": "({= ${AllPackages>tables}.length})",
 																															"script": "",
 																															"translation": []
 																														},
@@ -1572,7 +1600,7 @@
 																							"customComponent": false,
 																							"bindingType": "h",
 																							"bindingSource": "P9",
-																							"modelPath": "PackageTables>tables",
+																							"modelPath": "AllPackages>tables",
 																							"request": [],
 																							"response": [],
 																							"attributes": [],
@@ -1733,7 +1761,7 @@
 																												{
 																													"attribute": "text",
 																													"grouping": "Properties",
-																													"value": "{PackageTables>name}",
+																													"value": "{AllPackages>name}",
 																													"script": "",
 																													"translation": []
 																												}
@@ -1753,7 +1781,7 @@
 																												{
 																													"attribute": "text",
 																													"grouping": "Properties",
-																													"value": "{PackageTables>description}",
+																													"value": "{AllPackages>description}",
 																													"script": "",
 																													"translation": []
 																												}
@@ -1773,7 +1801,7 @@
 																												{
 																													"attribute": "text",
 																													"grouping": "Properties",
-																													"value": "{PackageTables>createdAt}",
+																													"value": "{AllPackages>createdAt}",
 																													"script": "",
 																													"translation": []
 																												},
@@ -1800,7 +1828,7 @@
 																												{
 																													"attribute": "text",
 																													"grouping": "Properties",
-																													"value": "{PackageTables>createdBy}",
+																													"value": "{AllPackages>createdBy}",
 																													"script": "",
 																													"translation": []
 																												}
@@ -2294,7 +2322,7 @@
 						},
 						{
 							"fieldNo": "c956067d-3406-4a2e-a584-5132021f9574",
-							"fieldName": "PackageTables",
+							"fieldName": "AllPackages",
 							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
 							"fieldType": "neptune.model",
 							"script": "",
@@ -2614,8 +2642,20 @@
 							"data": []
 						},
 						{
+							"fieldNo": "e47f7e9d-f6d1-4503-c8a9-f1b40dac7bd2",
+							"fieldName": "AllTables",
+							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
+							"fieldType": "neptune.model",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
 							"fieldNo": "177d7d7d-f82d-448f-c74e-0ecea463a190",
-							"fieldName": "FormattedTables",
+							"fieldName": "SelectedTablesFormatted",
 							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
 							"fieldType": "neptune.model",
 							"script": "",
@@ -2627,7 +2667,7 @@
 						},
 						{
 							"fieldNo": "8596aa88-81f8-4cce-f831-05df599839b6",
-							"fieldName": "NeptuneTables",
+							"fieldName": "SelectedTablesNeptune",
 							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
 							"fieldType": "neptune.model",
 							"script": "",
@@ -2695,13 +2735,13 @@
 			"sap.m.HBox"
 		]
 	},
-	"ver": "23.6.20.953",
+	"ver": "23.6.20.1357",
 	"application": "neptune_modeller_tables",
 	"title": "",
 	"description": "",
 	"enableFileStorage": false,
 	"enableManifest": false,
-	"enableStylesheet": false,
+	"enableStylesheet": true,
 	"enableObfuscate": false,
 	"onlyRunLaunchpad": false,
 	"disabled": false,
@@ -2719,7 +2759,7 @@
 	"ui5_language": null,
 	"ui5_url": "",
 	"cus_theme": "",
-	"css": "",
+	"css": "file:///css.css",
 	"compiledCss": "file://script/undefined/undefined.script",
 	"header": "",
 	"manifest": "",

@@ -1,7 +1,7 @@
 namespace CustomComponent {
     let Graph;
     let MiniMap;
-    let graph = null;
+    export let graph = null;
     let nodeConfigName: string;
     let edgeConfigName: string;
     let portLayoutName: string;

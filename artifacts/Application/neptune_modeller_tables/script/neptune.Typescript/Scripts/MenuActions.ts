@@ -17,7 +17,7 @@ const tableMenuActions = [
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelNeptuneTables.oData.find(item => item.id === tableId);
+                const table = modelSelectedTablesNeptune.oData.find(item => item.id === tableId);
                 const parameters = encodeURIComponent(
                     JSON.stringify({
                         id: tableId,
@@ -40,7 +40,7 @@ const tableMenuActions = [
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelNeptuneTables.oData.find(item => item.id === tableId);
+                const table = modelSelectedTablesNeptune.oData.find(item => item.id === tableId);
                 const parameters = encodeURIComponent(
                     JSON.stringify({
                         id: tableId,
