@@ -30,40 +30,7 @@ namespace Tables {
 
         modelAllTables.setData(allTables);
         modelAllPackages.setData(packagesWithTables);
-
-        segmentedBtnSort.setSelectedKey("changedOn");
-        segmentedButtonUpdated.firePress();
-    }
-
-    export function getSelectedIds(): string[] {
-        let selectedTables = tableTables.getSelectedItems();
-        const tableIds = [];
-
-        const getItemDetails = (selectedItem) =>
-            selectedItem.getBindingContext("AllTables").getObject();
-
-        if (selectedTables.length) {
-            selectedTables.forEach((table) => {
-                const tableData = getItemDetails(table);
-
-                tableIds.push(tableData.id);
-            });
-        }
-
-        if (!selectedTables.length) {
-            const selectedPackage = listPackages.getSelectedItem();
-            if (selectedPackage) {
-                const context = selectedPackage.getBindingContext("AllPackages");
-                const data = context.getObject();
-                //@ts-ignore
-                const packageTables = data.tables;
-                packageTables.forEach((table) => {
-                    tableIds.push(table.id);
-                });
-            }
-        }
-
-        return tableIds;
+        return { allTables, packagesWithTables };
     }
 
     export function sort(column: string, table, descending = true) {
@@ -72,19 +39,34 @@ namespace Tables {
         binding.sort(oSorter);
     }
 
-    export function resetSelection(currentTab = "all") {
-        if (currentTab === "packages") {
-            tableTables.removeSelections(true);
-            modellistSelectedTables.setData([]);
-        } else if (currentTab === "tables") {
-            listPackages.removeSelections(true);
-            listPackages.fireSelectionChange();
-        } else {
-            tableTables.removeSelections(true);
-            modellistSelectedTables.setData([]);
+    export function buildPackageTree(packages) {
+        const treeData = [];
 
-            listPackages.removeSelections(true);
-            listPackages.fireSelectionChange();
-        }
+        packages.forEach((item) => {
+            treeData.push({
+                name: item.name,
+                description: item.description,
+                tableCount: item.tables.length,
+                updatedAt: item.updatedAt,
+                changedBy: item.changedBy,
+                id: item.id,
+                parent: "",
+                action: true,
+            });
+            item.tables.forEach((table) => {
+                treeData.push({
+                    name: table.name,
+                    description: table.description,
+                    id: table.id,
+                    updatedAt: table.updatedAt,
+                    changedBy: table.changedBy,
+                    parent: item.id,
+                    action: false,
+                });
+            });
+        });
+
+        const nestedTree = { children: _convertFlatToNested(treeData, "id", "parent") };
+        return nestedTree;
     }
 }

@@ -1,0 +1,1 @@
+tableModeller.centerContent();

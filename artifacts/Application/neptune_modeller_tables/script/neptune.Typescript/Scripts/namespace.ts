@@ -12,8 +12,15 @@ namespace CustomComponent {
         overwriteEdge: true,
     };
 
-    export function initGraph() {
-        graphCore.init(graphConfig, openTableMenu);
+    export async function init() {
+        const awaitDom = () => {
+            const containerDomRef = graphContainer.getDomRef() as HTMLDivElement;
+            if (!containerDomRef) {
+                return setTimeout(awaitDom, 10);
+            }
+            graphCore.init(containerDomRef, graphConfig, openTableMenu);
+        };
+        awaitDom();
     }
 
     function openTableMenu(e, x, y, node, view) {
@@ -22,13 +29,6 @@ namespace CustomComponent {
         modelPopoverMenu.refresh();
         textSourceId.setText(node.id);
         popoverMenu.openBy(nodeHTMLElement, false);
-    }
-
-    export async function getConnectedTables(tableId: string) {
-        const table = await getTable(tableId);
-        const connectedTables = table.foreignKeys.map((key) => key.referencedTableId);
-        const tables = [tableId, ...connectedTables];
-        displayTables(tables);
     }
 
     export async function displayTables(selectedTables: string[]) {
@@ -42,14 +42,6 @@ namespace CustomComponent {
         const formattedData = TableModeller.formatTablesToX6(tables);
         modelSelectedTablesFormatted.setData(formattedData);
         graphCore.addCells(formattedData);
-    }
-
-    export function openDialog() {
-        diaTables.open();
-    }
-
-    export function closeDialog() {
-        diaTables.close();
     }
 
     export function centerContent() {
@@ -78,13 +70,13 @@ namespace CustomComponent {
         graphCore.redo();
     }
 
-    export function showMinimap() {
+    /* export function showMinimap() {
         graphCore.showMinimap();
     }
 
     export function hideMinimap() {
         graphCore.hideMinimap();
-    }
+    } */
 
     export function removeCells(nodeIds: string[]) {
         graphCore.removeCells(nodeIds);
@@ -98,5 +90,13 @@ namespace CustomComponent {
     export function hasSelection() {
         const selectedTables = modelSelectedTablesFormatted.getData();
         return selectedTables.length > 0;
+    }
+
+    export function getJSONview() {
+        return graphCore.getJSONview();
+    }
+
+    export function addDiagramFromJSON(data) {
+        graphCore.addDiagramFromJSON(data);
     }
 }

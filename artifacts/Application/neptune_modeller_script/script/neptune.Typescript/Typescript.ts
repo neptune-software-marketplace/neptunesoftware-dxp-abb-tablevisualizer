@@ -25,7 +25,7 @@ namespace CustomComponent {
                 if (typeof History === 'undefined') return setTimeout(check, 10);
                 //@ts-ignore
                 if (typeof Scroller === 'undefined') return setTimeout(check, 10);
-                // @ts-ignore
+                //@ts-ignore
                 resolve({ Graph, MiniMap, History, Scroller });
             })();
         });

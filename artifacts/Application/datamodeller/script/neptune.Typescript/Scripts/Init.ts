@@ -1,4 +1,8 @@
-sap.ui.getCore().attachInit(function (startParams) {
-    tableModeller.initGraph();
-    tableModeller.openDialog();
+sap.ui.getCore().attachInit(async function (startParams) {
+    getTableData();
+    tableModeller.init();
+    modelSelected.setData({
+        package: '',
+        tables: []
+    })
 });

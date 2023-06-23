@@ -1,7 +1,7 @@
 namespace CustomComponent {
     let Graph;
     let MiniMap;
-    export let graph = null;
+    let graph = null;
     let nodeConfigName: string;
     let edgeConfigName: string;
     let portLayoutName: string;
@@ -15,11 +15,15 @@ namespace CustomComponent {
     export function graphExists() {
         return graph !== null;
     }
+    //let minimapContainer;
 
-    const containerDiv = document.getElementById("graphContainer") as HTMLDivElement;
-    const minimapContainer = document.getElementById("minimapContainer") as HTMLDivElement;
+    export async function init(
+        container: HTMLDivElement,
+        graphConfig: GraphConfig,
+        nodeRightClickFunction
+    ) {
+        const containerDiv = container;
 
-    export async function init(graphConfig: GraphConfig, nodeRightClickFunction) {
         const X6Objects = await getX6Objects();
         //@ts-ignore
         Graph = X6Objects.Graph;
@@ -76,21 +80,15 @@ namespace CustomComponent {
             },
         });
 
-        graph.use(
+        /* graph.use(
             //@ts-ignore
             new MiniMap({
                 container: minimapContainer,
-                scalable: false,
-                minScale: 5,
+                width: 200,
+                height: 160,
+                scalable: true,
             })
-        );
-
-        /* graph.use(
-            //@ts-ignore
-            new X6Objects.Scroller({
-                enabled: true
-            })
-        ) */
+        ); */
 
         graph.use(
             //@ts-ignore
@@ -99,7 +97,7 @@ namespace CustomComponent {
             })
         );
 
-        graph.on("node:contextmenu", ({e, x, y, node, view}) => {
+        graph.on("node:contextmenu", ({ e, x, y, node, view }) => {
             nodeRightClickFunction(e, x, y, node, view);
         });
     }
@@ -116,6 +114,7 @@ namespace CustomComponent {
         }
         if (graph) {
             graph.dispose();
+            graph = null;
         }
     }
 
@@ -124,11 +123,11 @@ namespace CustomComponent {
         items.forEach((item) => {
             if ("source" in item) {
                 const edge = graph.createEdge(item);
-                edge.setAttrs({body: {id: `edge-${item.id}`}});
+                edge.setAttrs({ body: { id: `edge-${item.id}` } });
                 cells.push(edge);
             } else {
                 const node = graph.createNode(item);
-                node.setAttrs({body: {id: `node-${item.id}`}});
+                node.setAttrs({ body: { id: `node-${item.id}` } });
                 cells.push(node);
             }
         });
@@ -137,9 +136,10 @@ namespace CustomComponent {
 
     export function addCells(formattedItems) {
         const cells = createCells(formattedItems);
-        graph.resetCells(cells);
-        graph.zoomToFit({ padding: 10, maxScale: 1 });
-        //graph.fitToContent();
+        if (graph) {
+            graph.resetCells(cells);
+            graph.zoomToFit({ padding: 10, maxScale: 1 });
+        }
     }
 
     export function toggleEdgeVisibility() {
@@ -162,17 +162,27 @@ namespace CustomComponent {
     }
 
     export function centerContent() {
-        graph.centerContent();
+        if (graph) {
+            graph.centerContent();
+            graph.zoomToFit({
+                padding: 20,
+                maxScale: 2,
+            });
+        }
     }
 
     export function setBackground(color: string) {
-        graph.drawBackground({
-            color,
-        });
+        if (graph) {
+            graph.drawBackground({
+                color,
+            });
+        }
     }
 
     export function clearBackground() {
-        graph.clearBackground();
+        if (graph) {
+            graph.clearBackground();
+        }
     }
 
     export function toggleHistory(): boolean {
@@ -185,21 +195,26 @@ namespace CustomComponent {
     }
 
     export function undo() {
-        graph.undo();
+        if (graph) {
+            graph.undo();
+        }
     }
 
     export function redo() {
-        graph.redo();
+        if (graph) {
+            graph.redo();
+        }
     }
 
     export function clearGraph() {
-        graph.clearCells();
+        if (graph) {
+            graph.clearCells();
+        }
     }
 
-    export function hideMinimap() {
+    /* export function hideMinimap() {
         if (graph) {
             graph.disposePlugins("minimap");
-            const minimapContainer = document.getElementById("minimapContainer") as HTMLDivElement;
             minimapContainer.style.display = "none";
         }
     }
@@ -215,9 +230,23 @@ namespace CustomComponent {
             );
             minimapContainer.style.display = "block";
         }
-    }
+    } */
 
     export function removeCells(cells) {
-        graph.removeCells(cells);
+        if (graph) {
+            graph.removeCells(cells);
+        }
+    }
+
+    export function getJSONview() {
+        if (graph) {
+            return graph.toJSON();
+        }
+    }
+
+    export function addDiagramFromJSON(data) {
+        if (graph) {
+            graph.fromJSON(data);
+        }
     }
 }

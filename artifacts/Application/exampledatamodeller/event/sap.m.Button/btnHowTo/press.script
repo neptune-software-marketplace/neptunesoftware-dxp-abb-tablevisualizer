@@ -1,0 +1,5 @@
+if (popoverInfo.isOpen()) {
+    popoverInfo.close()
+} else {
+    popoverInfo.openBy(this);
+}

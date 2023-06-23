@@ -19,6 +19,12 @@
 			"description": ""
 		},
 		{
+			"id": "b68747a9-0352-4723-8cc0-88ac9e4c13f5",
+			"application": "exampledatamodeller",
+			"title": "",
+			"description": ""
+		},
+		{
 			"id": "7e99a724-63e6-4693-a355-4c3b90e7f777",
 			"application": "neptune_modeller_graph",
 			"title": "",

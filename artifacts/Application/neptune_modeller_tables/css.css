@@ -1,16 +1,7 @@
-.sapMITBFilterDefault {
-    border: none;
-}
-
-.sapMITBSelected .sapMITBFilterDefault {
-    border: 2px solid black;
-    background: none;
-}
-
-.sapUiTheme-sap_horizon .sapMITBFilterDefault .sapMITBFilterIcon {
-    filter: invert(18%) sepia(12%) saturate(6301%) hue-rotate(161deg) brightness(96%) contrast(101%);
-}
-
-.sapUiTheme-sap_horizon_dark .sapMITBFilterDefault .sapMITBFilterIcon {
-    filter: invert(84%) sepia(19%) saturate(2889%) hue-rotate(339deg) brightness(96%) contrast(95%);
+.minimapContainer {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    z-index: 10;
+    border: 5px solid #003e52;
 }

@@ -11,7 +11,7 @@ const tableMenuActions = [
     {
         text: "Definition",
         action: () => {
-            let path = "/cockpit.html#tools-tabledefinition";
+            let path = "tools-tabledefinition";
             //@ts-ignore
             const tableId = textSourceId.getText();
 
@@ -27,14 +27,14 @@ const tableMenuActions = [
                 path += `&${parameters}`;
             }
 
-            sap.m.URLHelper.redirect(path, false);
+            location.hash = path;
         },
         icon: "sap-icon://fa-regular/folder-open",
     },
     /* {
         text: "Data Browser",
         action: () => {
-            let path = "/cockpit.html#tools-tablebrowser";
+            let path = "tools-tablebrowser";
             //@ts-ignore
             const tableId = textSourceId.getText();
 
@@ -50,7 +50,7 @@ const tableMenuActions = [
                 path += `&${parameters}`;
             }
 
-            sap.m.URLHelper.redirect(path, false);
+            location.hash = path;
         },
         icon: "sap-icon://fa-regular/folder-open",
     }, */

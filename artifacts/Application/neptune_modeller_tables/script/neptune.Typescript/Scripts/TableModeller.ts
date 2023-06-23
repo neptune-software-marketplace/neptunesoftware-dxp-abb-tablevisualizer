@@ -273,7 +273,7 @@ namespace TableModeller {
             if (args.sourceCell === args.targetCell) return false
             return true
         },
-        createEdge() {
+        /* createEdge() {
             return graphCore.graph.createEdge({
                 shape: 'edge',
                 attrs: {
@@ -283,6 +283,9 @@ namespace TableModeller {
                     }
                 }
             })
+        }, */
+        validateMagnet({e, magnet, view, cell}) {
+            return false
         }
     };
 
