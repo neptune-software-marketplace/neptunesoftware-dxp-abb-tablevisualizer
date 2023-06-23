@@ -4,31 +4,6 @@
 	"createdBy": "kristin.eliassen@neptune-software.com",
 	"objects": [
 		{
-			"fieldNo": "e7c40805-02dd-4daf-f159-0ae599557658",
-			"fieldName": "oHTMLContainerGraph",
-			"fieldParent": 0,
-			"fieldType": "sap.ui.core.HTML",
-			"script": "",
-			"customComponent": false,
-			"request": [],
-			"response": [],
-			"attributes": [],
-			"data": [
-				{
-					"fieldNo": "43ad6ab8-500e-4a68-d003-05f08659fbfe",
-					"fieldName": "oHTMLGraph",
-					"fieldParent": "e7c40805-02dd-4daf-f159-0ae599557658",
-					"fieldType": "neptune.Html",
-					"script": "file://script/neptune.Html/oHTMLGraph.script",
-					"customComponent": false,
-					"request": [],
-					"response": [],
-					"attributes": [],
-					"data": []
-				}
-			]
-		},
-		{
 			"fieldNo": 99999,
 			"data": [
 				{
@@ -86,47 +61,10 @@
 		"icon": null,
 		"documentation": "",
 		"containerId": null,
-		"attributes": [
-			{
-				"id": "6c58f2fa-c00d-43c3-cb56-08406d19375c",
-				"objectType": "group",
-				"attribute": {
-					"ATTRIBUTE": "HTMLGraphContainer",
-					"GROUPING": ""
-				}
-			},
-			{
-				"id": "44bfa5d3-05df-4890-8fec-51e11c85311c",
-				"objectType": "attribute",
-				"fieldId": "e7c40805-02dd-4daf-f159-0ae599557658",
-				"parent": "6c58f2fa-c00d-43c3-cb56-08406d19375c",
-				"attribute": {
-					"ATTRIBUTE": "afterRendering",
-					"GROUPING": "HTMLGraphContainer",
-					"PARENT": "HTMLGraphContainer"
-				},
-				"original": {
-					"FIELD_ID": "e7c40805-02dd-4daf-f159-0ae599557658",
-					"ATTRIBUTE": "afterRendering",
-					"VALUE_TABLE": 0,
-					"GROUPING": "Events",
-					"PARENT": "Events",
-					"SHOW_LABEL": false,
-					"DEFAULT": "",
-					"ENABLE_VALUES": false,
-					"VALUEHELPONLY": false,
-					"SCRIPT_ICON": "sap-icon://document-text",
-					"SHOW_SCRIPT": true,
-					"ENABLE_SCRIPT": false
-				},
-				"fieldType": "sap.ui.core.HTML"
-			}
-		],
-		"topLevelObjects": [
-			"sap.ui.core.HTML"
-		]
+		"attributes": [],
+		"topLevelObjects": []
 	},
-	"ver": "23.6.23.1451",
+	"ver": "23.6.23.1531",
 	"application": "neptune_modeller_graph",
 	"title": "",
 	"description": "",
