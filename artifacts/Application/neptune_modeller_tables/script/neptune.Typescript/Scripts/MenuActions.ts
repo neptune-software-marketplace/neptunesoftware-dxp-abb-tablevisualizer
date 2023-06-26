@@ -8,49 +8,56 @@ const tableMenuActions = [
         },
         icon: "sap-icon://hide",
     },
-    {
+    /* {
         text: "Definition",
         action: () => {
-            let path = "tools-tabledefinition";
-            //@ts-ignore
             const tableId = textSourceId.getText();
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelSelectedTablesNeptune.oData.find(item => item.id === tableId);
-                const parameters = encodeURIComponent(
-                    JSON.stringify({
+                const table = modelSelectedTablesNeptune.oData.find((item) => item.id === tableId);
+                const redirectDetails = {
+                    target: {
+                        semanticObject: "tools",
+                        action: "tabledefinition",
+                    },
+                    params: {
                         id: tableId,
                         name: table.name,
-                    })
-                );
-                path += `&${parameters}`;
-            }
+                    },
+                    query: {},
+                };
 
-            location.hash = path;
+                //@ts-ignore
+                sap.n.HashNavigation.toExternal(redirectDetails);
+            }
         },
         icon: "sap-icon://fa-regular/folder-open",
     },
-    /* {
+    {
         text: "Data Browser",
         action: () => {
-            let path = "tools-tablebrowser";
             //@ts-ignore
             const tableId = textSourceId.getText();
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelSelectedTablesNeptune.oData.find(item => item.id === tableId);
-                const parameters = encodeURIComponent(
-                    JSON.stringify({
+                const table = modelSelectedTablesNeptune.oData.find((item) => item.id === tableId);
+                const redirectDetails = {
+                    target: {
+                        semanticObject: "tools",
+                        action: "tablebrowser",
+                    },
+                    params: {
                         id: tableId,
                         name: table.name,
-                    })
-                );
-                path += `&${parameters}`;
-            }
+                    },
+                    query: {},
+                };
 
-            location.hash = path;
+                //@ts-ignore
+                sap.n.HashNavigation.toExternal(redirectDetails);
+            }
         },
         icon: "sap-icon://fa-regular/folder-open",
     }, */

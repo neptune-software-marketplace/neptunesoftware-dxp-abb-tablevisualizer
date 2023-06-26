@@ -68,19 +68,38 @@ function filterPackages() {
     const binding = treeTablePackages.getBinding("rows");
 
     //@ts-ignore
-    binding.filter([
-        new sap.ui.model.Filter({
-            filters: [
-                new sap.ui.model.Filter("name", sap.ui.model.FilterOperator.Contains, searchValue),
-                new sap.ui.model.Filter(
-                    "description",
-                    sap.ui.model.FilterOperator.Contains,
-                    searchValue
-                ),
-            ],
-            and: false,
-        }),
-    ]);
+    binding.filter([]);
+
+    if (searchValue) {
+        //@ts-ignore
+        binding.filter([
+            new sap.ui.model.Filter({
+                filters: [
+                    new sap.ui.model.Filter(
+                        "name",
+                        sap.ui.model.FilterOperator.Contains,
+                        searchValue
+                    ),
+                    new sap.ui.model.Filter(
+                        "description",
+                        sap.ui.model.FilterOperator.Contains,
+                        searchValue
+                    ),
+                    new sap.ui.model.Filter(
+                        "parentName",
+                        sap.ui.model.FilterOperator.Contains,
+                        searchValue
+                    ),
+                    new sap.ui.model.Filter(
+                        "parentDesc",
+                        sap.ui.model.FilterOperator.Contains,
+                        searchValue
+                    ),
+                ],
+                and: false,
+            }),
+        ]);
+    }
 
     treeTablePackages.expandToLevel(99);
 }

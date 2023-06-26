@@ -51,6 +51,7 @@ namespace Tables {
                 changedBy: item.changedBy,
                 id: item.id,
                 parent: "",
+                design: 'Bold',
                 action: true,
             });
             item.tables.forEach((table) => {
@@ -61,6 +62,8 @@ namespace Tables {
                     updatedAt: table.updatedAt,
                     changedBy: table.changedBy,
                     parent: item.id,
+                    parentName: item.name,
+                    parentDesc: item.description,
                     action: false,
                 });
             });

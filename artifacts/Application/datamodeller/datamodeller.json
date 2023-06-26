@@ -1621,6 +1621,13 @@
 																	"translation": []
 																},
 																{
+																	"attribute": "enableCustomFilter",
+																	"grouping": "Properties",
+																	"value": "false",
+																	"script": "",
+																	"translation": []
+																},
+																{
 																	"attribute": "rowSelectionChange",
 																	"grouping": "Events",
 																	"value": "Anonymous Function",
@@ -1650,10 +1657,10 @@
 																	],
 																	"data": [
 																		{
-																			"fieldNo": "b17b962d-b220-437d-de8e-673476e3d1cd",
+																			"fieldNo": "8baecf29-0b58-4046-9f4e-0845a99b10d6",
 																			"fieldName": "textPackageName",
 																			"fieldParent": "ffc89008-5371-4329-c065-2230075d43b2",
-																			"fieldType": "sap.m.Text",
+																			"fieldType": "sap.m.Label",
 																			"script": "",
 																			"customComponent": false,
 																			"request": [],
@@ -1663,6 +1670,13 @@
 																					"attribute": "text",
 																					"grouping": "Properties",
 																					"value": "{name}",
+																					"script": "",
+																					"translation": []
+																				},
+																				{
+																					"attribute": "design",
+																					"grouping": "Properties",
+																					"value": "{design}",
 																					"script": "",
 																					"translation": []
 																				}
@@ -1691,10 +1705,10 @@
 																	],
 																	"data": [
 																		{
-																			"fieldNo": "dc8a1a6a-78e1-4fc6-9e48-876fb71ce1b0",
+																			"fieldNo": "85302ccf-5b9b-4980-a701-27f87cfe17ee",
 																			"fieldName": "textPackageDesc",
 																			"fieldParent": "fdae5a06-8272-4e4a-88cd-d918be9fbf15",
-																			"fieldType": "sap.m.Text",
+																			"fieldType": "sap.m.Label",
 																			"script": "",
 																			"customComponent": false,
 																			"request": [],
@@ -2236,7 +2250,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.6.23.1531",
+	"ver": "23.6.26.1213",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
