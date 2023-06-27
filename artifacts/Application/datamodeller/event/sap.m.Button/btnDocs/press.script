@@ -1,0 +1,2 @@
+const docUrl = 'https://docs.neptune-software.com/neptune-dxp-portal/marketplace-content/datamodeller/index.html';
+sap.m.URLHelper.redirect(docUrl, true);

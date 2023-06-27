@@ -1621,13 +1621,6 @@
 																	"translation": []
 																},
 																{
-																	"attribute": "enableCustomFilter",
-																	"grouping": "Properties",
-																	"value": "false",
-																	"script": "",
-																	"translation": []
-																},
-																{
 																	"attribute": "rowSelectionChange",
 																	"grouping": "Events",
 																	"value": "Anonymous Function",
@@ -1815,6 +1808,13 @@
 							"translation": []
 						},
 						{
+							"attribute": "showHeader",
+							"grouping": "Properties",
+							"value": "false",
+							"script": "",
+							"translation": []
+						},
+						{
 							"attribute": "placement",
 							"grouping": "Properties",
 							"value": "PreferredBottomOrFlip",
@@ -1823,6 +1823,100 @@
 						}
 					],
 					"data": [
+						{
+							"fieldNo": "cbc71715-c44e-4a64-9320-ecd460c55668",
+							"fieldName": "Toolbar",
+							"fieldParent": "4c9cb094-28f2-446f-e574-079be158f6c3",
+							"fieldType": "sap.m.Toolbar",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "position",
+									"grouping": "Parent",
+									"value": "HeaderToolbar",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": [
+								{
+									"fieldNo": "1038936f-8583-46de-c33c-9933d090da90",
+									"fieldName": "titlePopoverInfo",
+									"fieldParent": "cbc71715-c44e-4a64-9320-ecd460c55668",
+									"fieldType": "sap.m.Title",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "text",
+											"grouping": "Properties",
+											"value": "Tips and tricks",
+											"script": "",
+											"translation": []
+										}
+									],
+									"data": []
+								},
+								{
+									"fieldNo": "dc0d313b-1148-4f2c-8bee-03c11966fbb4",
+									"fieldName": "ToolbarSpacer2",
+									"fieldParent": "cbc71715-c44e-4a64-9320-ecd460c55668",
+									"fieldType": "sap.m.ToolbarSpacer",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								},
+								{
+									"fieldNo": "4184da04-4bd7-4653-b988-d272ae07f772",
+									"fieldName": "btnDocs",
+									"fieldParent": "cbc71715-c44e-4a64-9320-ecd460c55668",
+									"fieldType": "sap.m.Button",
+									"script": "",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [
+										{
+											"attribute": "type",
+											"grouping": "Properties",
+											"value": "Transparent",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "tooltip",
+											"grouping": "Properties",
+											"value": "Show documentation about this app",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "icon",
+											"grouping": "Properties",
+											"value": "sap-icon://question-mark",
+											"script": "",
+											"translation": []
+										},
+										{
+											"attribute": "press",
+											"grouping": "Events",
+											"value": "Anonymous Function",
+											"script": "file://event/sap.m.Button/btnDocs/press.script",
+											"translation": []
+										}
+									],
+									"data": []
+								}
+							]
+						},
 						{
 							"fieldNo": "5fac44e8-72f6-4d9f-8696-3df6defcc0cb",
 							"fieldName": "VBox",
@@ -2250,7 +2344,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.6.26.1213",
+	"ver": "23.6.27.166",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
