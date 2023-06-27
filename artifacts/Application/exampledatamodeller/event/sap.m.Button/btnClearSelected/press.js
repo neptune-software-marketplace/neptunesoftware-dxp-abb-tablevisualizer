@@ -1,2 +1,0 @@
-tableTables.removeSelections();
-tableTables.fireSelectionChange();

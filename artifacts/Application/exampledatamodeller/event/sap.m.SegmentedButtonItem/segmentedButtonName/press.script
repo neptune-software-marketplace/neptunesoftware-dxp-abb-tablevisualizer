@@ -1,1 +1,0 @@
-Tables.sort('name', tableTables, false);
