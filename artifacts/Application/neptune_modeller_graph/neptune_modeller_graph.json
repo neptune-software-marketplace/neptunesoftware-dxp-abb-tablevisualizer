@@ -64,7 +64,7 @@
 		"attributes": [],
 		"topLevelObjects": []
 	},
-	"ver": "23.6.23.1531",
+	"ver": "23.7.4.1655",
 	"application": "neptune_modeller_graph",
 	"title": "",
 	"description": "",
@@ -103,6 +103,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
 	"apis": [],
 	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
 }

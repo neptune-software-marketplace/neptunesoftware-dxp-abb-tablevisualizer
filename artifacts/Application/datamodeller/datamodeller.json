@@ -401,7 +401,7 @@
 												{
 													"attribute": "enabled",
 													"grouping": "Properties",
-													"value": "false",
+													"value": "{tableModeller_AppControl>/changesMade}",
 													"script": "",
 													"translation": []
 												},
@@ -444,7 +444,7 @@
 												{
 													"attribute": "enabled",
 													"grouping": "Properties",
-													"value": "false",
+													"value": "{tableModeller_AppControl>/changesMade}",
 													"script": "",
 													"translation": []
 												},
@@ -461,12 +461,11 @@
 										},
 										{
 											"fieldNo": "a3dddba6-f75e-4a75-95c6-bad1fdbd317d",
-											"fieldName": "btnRefresh",
+											"fieldName": "btnResetChanges",
 											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
 											"fieldType": "sap.m.Button",
 											"script": "",
 											"customComponent": false,
-											"disabled": true,
 											"request": [],
 											"response": [],
 											"attributes": [
@@ -480,7 +479,7 @@
 												{
 													"attribute": "text",
 													"grouping": "Properties",
-													"value": "Reset view",
+													"value": "Reset changes",
 													"script": "",
 													"translation": []
 												},
@@ -492,10 +491,17 @@
 													"translation": []
 												},
 												{
+													"attribute": "enabled",
+													"grouping": "Properties",
+													"value": "{tableModeller_AppControl>/changesMade}",
+													"script": "",
+													"translation": []
+												},
+												{
 													"attribute": "press",
 													"grouping": "Events",
 													"value": "Anonymous Function",
-													"script": "file://event/sap.m.Button/btnRefresh/press.script",
+													"script": "file://event/sap.m.Button/btnResetChanges/press.script",
 													"translation": []
 												}
 											],
@@ -598,6 +604,66 @@
 											"data": []
 										},
 										{
+											"fieldNo": "c9824bc0-60ed-4f8d-8bc2-cf5ccacc3cf0",
+											"fieldName": "btnSaveChanges",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "Save changes",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://save",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "enabled",
+													"grouping": "Properties",
+													"value": "{tableModeller_AppControl>/changesMade}",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "tableModeller.saveChanges();",
+													"script": "tableModeller.saveChanges();",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "2c6b81a2-8fb4-4da2-b4f4-96d1c6911a65",
+											"fieldName": "ToolbarSeparator2",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.ToolbarSeparator",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [],
+											"data": []
+										},
+										{
 											"fieldNo": "fcd65da2-c882-4df4-ea96-6347099d02b1",
 											"fieldName": "btnHowTo",
 											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
@@ -626,6 +692,34 @@
 													"grouping": "Events",
 													"value": "Anonymous Function",
 													"script": "file://event/sap.m.Button/btnHowTo/press.script",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "606beefa-2a01-40af-fe89-0b5d33952a53",
+											"fieldName": "Button",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "text",
+													"grouping": "Properties",
+													"value": "logJSON",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "console.log(tableModeller.getJSONview())",
+													"script": "console.log(tableModeller.getJSONview())",
+													"language": "javascript",
 													"translation": []
 												}
 											],
@@ -1016,6 +1110,55 @@
 																	"request": [],
 																	"response": [],
 																	"attributes": [],
+																	"data": []
+																},
+																{
+																	"fieldNo": "efdb4406-79c9-4bf9-f8ef-b9a0dd3a3961",
+																	"fieldName": "btnShowConnectedTables",
+																	"fieldParent": "3e97c645-4e08-4336-e490-8fc50f0ce1ce",
+																	"fieldType": "sap.m.Button",
+																	"script": "",
+																	"customComponent": false,
+																	"disabled": true,
+																	"request": [],
+																	"response": [],
+																	"attributes": [
+																		{
+																			"attribute": "type",
+																			"grouping": "Properties",
+																			"value": "Transparent",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "text",
+																			"grouping": "Properties",
+																			"value": "Show connections",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "icon",
+																			"grouping": "Properties",
+																			"value": "sap-icon://connected",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "enabled",
+																			"grouping": "Properties",
+																			"value": "false",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
+																			"attribute": "press",
+																			"grouping": "Events",
+																			"value": "Anonymous Function",
+																			"script": "file://event/sap.m.Button/btnShowConnectedTables/press.script",
+																			"translation": []
+																		}
+																	],
 																	"data": []
 																},
 																{
@@ -2344,7 +2487,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.6.27.166",
+	"ver": "23.7.7.1429",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
@@ -2383,6 +2526,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
 	"apis": [],
 	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
 }

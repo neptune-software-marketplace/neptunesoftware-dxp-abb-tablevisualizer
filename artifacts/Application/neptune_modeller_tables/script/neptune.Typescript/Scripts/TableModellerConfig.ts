@@ -1,4 +1,4 @@
-namespace TableModeller {
+namespace TableModellerConfig {
     const NODE_WIDTH = 300;
     const LINE_HEIGHT = 24;
 
@@ -42,7 +42,13 @@ namespace TableModeller {
             // add table ID as first port
             formattedTable.ports.push({
                 id: `${index + 1}-1`,
+                columnId: "",
                 group: "list",
+                isPrimary: true,
+                isUnique: true,
+                isNullable: true,
+                columnName: "id",
+                dataType: "uuid",
                 attrs: {
                     portBody: {
                         class: "x6PrimaryKey",
@@ -53,7 +59,7 @@ namespace TableModeller {
                     portTypeLabel: {
                         text: "uuid",
                     },
-                    portPrimaryKey: {
+                    portProperties: {
                         text: "P",
                     },
                 },
@@ -61,14 +67,25 @@ namespace TableModeller {
 
             // add rest of table columns
             table.fields.forEach((field, x) => {
-                const isPrimaryKey = field.isUnique && !field.isNullable;
+                let properties = "";
+                if (field.isUnique) {
+                    properties += "U";
+                }
+                if (field.isNullable) {
+                    properties += "N";
+                }
 
                 formattedTable.ports.push({
                     id: `${index + 1}-${x + 2}`,
+                    columnId: field.id,
+                    columnName: field.fieldName,
                     group: "list",
+                    isUnique: field.isUnique,
+                    isNullable: field.isNullable,
+                    dataType: field.fieldType,
                     attrs: {
                         portBody: {
-                            class: isPrimaryKey ? "x6PrimaryKey" : "x6ConnectorLine",
+                            class: "x6ConnectorLine",
                         },
                         portNameLabel: {
                             text: field.fieldName,
@@ -76,8 +93,8 @@ namespace TableModeller {
                         portTypeLabel: {
                             text: field.fieldType,
                         },
-                        portPrimaryKey: {
-                            text: isPrimaryKey ? "P" : " ",
+                        portProperties: {
+                            text: properties,
                         },
                     },
                 });
@@ -134,7 +151,7 @@ namespace TableModeller {
 
                             formattedLink.attrs = {
                                 line: {
-                                    stroke: 'var(--nepHighlightColor)',
+                                    stroke: "var(--nepBrandYellow)",
                                     strokeWidth: 2,
                                 },
                             };
@@ -148,6 +165,28 @@ namespace TableModeller {
             }
         });
         return formattedData;
+    }
+
+    export function createNewForeignKey(fromTable: NeptuneTable, fromColumn: NeptuneTableColumn, toColumn: NeptuneTableColumn) {
+        const newForeignKey = {
+            id: ModelData.genID(),
+            name: "",
+            referencedTable: fromTable.name,
+            referencedTableId: fromTable.id,
+            referencedTableColumns: fromTable.fields,
+            columns: [
+                {
+                    referencedColumnId: fromColumn.id,
+                    id: toColumn.id,
+                    fieldName: toColumn.fieldName,
+                    fieldType: toColumn.fieldType,
+                    isUnique: toColumn.isUnique,
+                    referencedColumnName: fromColumn.fieldName,
+                },
+            ],
+        };
+
+        return newForeignKey;
     }
 
     export const nodeConfig = {
@@ -166,8 +205,8 @@ namespace TableModeller {
         attrs: {
             rect: {
                 strokeWidth: 1,
-                stroke: 'var(--nepBrandYellow)',
-                fill: 'var(--nepBrandYellow)',
+                stroke: "var(--nepBrandYellow)",
+                fill: "var(--nepBrandYellow)",
             },
             label: {
                 fontWeight: "bold",
@@ -193,7 +232,7 @@ namespace TableModeller {
                         },
                         {
                             tagName: "text",
-                            selector: "portPrimaryKey",
+                            selector: "portProperties",
                         },
                     ],
                     attrs: {
@@ -201,8 +240,8 @@ namespace TableModeller {
                             width: NODE_WIDTH,
                             height: LINE_HEIGHT,
                             strokeWidth: 1,
-                            stroke: 'var(--nepBrandYellow)',
-                            fill: '#eff1f2',
+                            stroke: "var(--nepBrandYellow)",
+                            fill: "#eff1f2",
                             magnet: true,
                         },
                         portNameLabel: {
@@ -222,7 +261,7 @@ namespace TableModeller {
                             refY: 6,
                             fontSize: 12,
                         },
-                        portPrimaryKey: {
+                        portProperties: {
                             ref: "portBody",
                             refX: "92%",
                             refY: 6,
@@ -236,11 +275,22 @@ namespace TableModeller {
     };
 
     export const edgeConfig = {
-        inherit: "edge",
-        attrs: {
-            line: {
-                stroke: 'var(--nepHighlightColor)',
-                strokeWidth: 2,
+        default: {
+            inherit: "edge",
+            attrs: {
+                line: {
+                    stroke: "var(--nepBrandYellow)",
+                    strokeWidth: 2,
+                },
+            },
+        },
+        variant: {
+            inherit: "edge",
+            attrs: {
+                line: {
+                    stroke: "var(--nepHighlightColor)",
+                    strokeWidth: 2,
+                },
             },
         },
     };
@@ -261,7 +311,7 @@ namespace TableModeller {
         router: {
             name: "er",
             args: {
-                offset: 25,
+                offset: 0,
                 direction: "H",
             },
         },
@@ -270,23 +320,23 @@ namespace TableModeller {
         allowLoop: false,
         allowEdge: false,
         validateConnection: function (this, args) {
-            if (args.sourceCell === args.targetCell) return false
-            return true
+            if (args.sourceCell === args.targetCell) return false;
+            const sourcePort = args.sourceCell.ports.items.find(
+                (port) => port.id === args.sourcePort
+            );
+            const targetPort = args.targetCell.ports.items.find(
+                (port) => port.id === args.targetPort
+            );
+            if (targetPort.isPrimary) return false;
+            if (!sourcePort.isUnique || !sourcePort.isPrimary) return false;
+            if (sourcePort.dataType !== targetPort.dataType) return false;
+            return true;
         },
-        /* createEdge() {
-            return graphCore.graph.createEdge({
-                shape: 'edge',
-                attrs: {
-                    line: {
-                        stroke: 'var(--nepHighlightColor)',
-                        strokeWidth: 2,
-                    }
-                }
-            })
-        }, */
-        validateMagnet({e, magnet, view, cell}) {
-            return false
-        }
+        validateMagnet({ e, view, cell, magnet }) {
+            const portId = magnet.parentElement.getAttribute("port");
+            const port = cell.getPort(portId);
+            if (!port.isUnique || !port.isPrimary) return false;
+            return true;
+        },
     };
-
 }

@@ -62,7 +62,7 @@
 			"data": [
 				{
 					"fieldNo": "57ba5f3b-4ef3-40c4-d9e3-74e6812bb175",
-					"fieldName": "popoverMenu",
+					"fieldName": "tableMenu",
 					"fieldParent": 99999,
 					"fieldType": "sap.m.Popover",
 					"script": "",
@@ -257,6 +257,36 @@
 					"response": [],
 					"attributes": [],
 					"data": [
+						{
+							"fieldNo": "92f1302e-9399-419e-eda8-b2c72a4d2578",
+							"fieldName": "AppControl",
+							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
+							"fieldType": "neptune.model",
+							"script": "",
+							"customComponent": false,
+							"bindingValue": "Generic Array",
+							"bindingType": "h",
+							"bindingSource": "P9",
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
+							"fieldNo": "67eb16ea-59f9-42c4-a556-c8a0b011d157",
+							"fieldName": "ChangedTables",
+							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
+							"fieldType": "neptune.model",
+							"script": "",
+							"customComponent": false,
+							"bindingValue": "Generic Array",
+							"bindingType": "h",
+							"bindingSource": "P9",
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
 						{
 							"fieldNo": "bb7e65bd-3d83-48ee-fa94-4aa139114260",
 							"fieldName": "PopoverMenu",
@@ -695,10 +725,10 @@
 						},
 						{
 							"fieldNo": "974ea86a-37b2-4235-c08c-5cc1ec345466",
-							"fieldName": "TableModeller",
+							"fieldName": "TableModellerConfig",
 							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
 							"fieldType": "neptune.Typescript",
-							"script": "file://script/neptune.Typescript/Scripts/TableModeller.ts",
+							"script": "file://script/neptune.Typescript/Scripts/TableModellerConfig.ts",
 							"customComponent": false,
 							"request": [],
 							"response": [],
@@ -772,7 +802,7 @@
 			"sap.m.HBox"
 		]
 	},
-	"ver": "23.6.26.1210",
+	"ver": "23.7.7.1429",
 	"application": "neptune_modeller_tables",
 	"title": "",
 	"description": "",
@@ -811,6 +841,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
 	"apis": [],
 	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
 }

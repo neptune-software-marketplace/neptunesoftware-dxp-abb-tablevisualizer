@@ -1,26 +1,26 @@
 interface NeptuneTableColumn {
+    id: string;
     fieldName: string;
     fieldType: string;
-    id: string;
     description?: string;
-    isUnique?: boolean;
+    isUnique: boolean;
     isNullable?: boolean;
 }
 
 interface NeptuneForeignKey {
-    columns: {
-        fieldName: string;
-        fieldType: string;
-        id: string;
-        isUnique: boolean;
-        referencedColumnId: string;
-        referencedColumnName: string;
-    }[];
     id: string;
     name: string;
     referencedTable: string;
-    referencedTableColumns: NeptuneTableColumn[];
     referencedTableId: string;
+    referencedTableColumns: NeptuneTableColumn[];
+    columns: {
+        referencedColumnId: string;
+        id: string;
+        fieldName: string;
+        fieldType: string;
+        isUnique: boolean;
+        referencedColumnName: string;
+    }[];
 }
 
 interface NeptuneTableIndex {
@@ -35,20 +35,22 @@ interface NeptuneTableIndex {
 }
 
 interface NeptuneTable {
-    changedBy: string;
-    createdAt: string;
-    createdBy: string;
-    description: string | null;
-    enableAudit: boolean;
-    fields: NeptuneTableColumn[];
-    foreignKeys: NeptuneForeignKey[];
     id: string;
-    includeDataInPackage: boolean;
-    indices: NeptuneTableIndex[];
-    name: string;
-    package: string | null;
+    createdAt: string;
     updatedAt: string;
+    createdBy: string;
+    changedBy: string;
+    fields: NeptuneTableColumn[];
+    indices: NeptuneTableIndex[];
+    foreignKeys: NeptuneForeignKey[];
+    name: string;
+    description: null | string;
     ver: string;
+    enableAudit: boolean;
+    includeDataInPackage: boolean;
+    package: string | null;
+    rolesRead: any[];
+    rolesWrite: any[];
 }
 
 interface Package {
@@ -73,6 +75,12 @@ interface Package {
 interface X6TablePort {
     id: string;
     group: string;
+    columnId?: string;
+    columnName?: string;
+    isPrimary?: boolean;
+    isUnique?: boolean;
+    isNullable?: boolean;
+    dataType: string;
     attrs: {
         portBody: {
             class: string;
@@ -80,7 +88,7 @@ interface X6TablePort {
         portNameLabel: {
             text: string;
         };
-        portPrimaryKey: {
+        portProperties: {
             text: string;
         };
         portTypeLabel: {

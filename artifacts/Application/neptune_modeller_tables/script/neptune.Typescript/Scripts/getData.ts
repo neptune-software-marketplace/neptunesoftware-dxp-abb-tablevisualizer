@@ -28,3 +28,13 @@ async function getTable(tableId: string) {
     const table = fetchData("/api/functions/Dictionary/Get", { id: tableId });
     return table;
 }
+
+async function saveTables(data) {
+    const savePromises = data.map((table) => fetchData("/api/functions/Dictionary/Save", table));
+    try {
+        const savedTables = await Promise.all(savePromises);
+        return savedTables;
+    } catch (error) {
+        console.error(error);
+    }
+}

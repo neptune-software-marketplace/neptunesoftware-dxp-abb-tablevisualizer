@@ -20,7 +20,10 @@ namespace CustomComponent {
     export async function init(
         container: HTMLDivElement,
         graphConfig: GraphConfig,
-        nodeRightClickFunction
+        nodeRightClickFunction = null,
+        edgeChangeFunction = null,
+        edgeRightClickFunction = null,
+        deleteEdgeFunction = null
     ) {
         const containerDiv = container;
 
@@ -61,7 +64,8 @@ namespace CustomComponent {
         //@ts-ignore
         Graph.registerEdge(
             graphConfig.edgeConfigName,
-            graphConfig.edgeConfig,
+            //@ts-ignore
+            graphConfig.edgeConfig?.default,
             graphConfig.overwriteEdge
         );
 
@@ -80,6 +84,87 @@ namespace CustomComponent {
             },
         });
 
+        // Styles connections drawn by user
+        graph.on("edge:connected", ({ edge }) => {
+            const edgeAttrs = {
+                line: {
+                    //@ts-ignore
+                    ...graphConfig.edgeConfig?.variant?.attrs?.line,
+                    id: `edge-${edge.id}`,
+                },
+            };
+            edge.setAttrs(edgeAttrs);
+        });
+
+        if (deleteEdgeFunction) {
+            const btnDelete = {
+                name: "button",
+                args: {
+                    markup: [
+                        {
+                            tagName: "circle",
+                            selector: "button",
+                            attrs: {
+                                r: 12,
+                                stroke: 'var(--nepHighlightColor)',
+                                fill: 'var(--nepBaseColor)',
+                                strokeWidth: 2,
+                                cursor: 'pointer'
+                            },
+                        },
+                        {
+                            tagName: 'text',
+                            textContent: 'X',
+                            selector: 'icon',
+                            attrs: {
+                                fill: 'var(--nepHighlightColor)',
+                                fontSize: 10,
+                                textAnchor: 'middle',
+                                pointerEvents: 'none',
+                                y: '0.3em'
+                            }
+                        }
+                    ],
+                    distance: -35,
+                    onClick({ view }) {
+                        const edge = view.cell;
+                        const source = edge.getSource();
+                        const target = edge.getTarget();
+                        deleteEdgeFunction({ view, edge, source, target });
+                    },
+                },
+            };
+
+            graph.on("edge:mouseenter", ({ cell }) => {
+                cell.addTools([btnDelete]);
+            });
+
+            graph.on("edge:mouseleave", ({ cell }) => {
+                if (cell.hasTool("button")) {
+                    cell.removeTool("button");
+                }
+            });
+        }
+
+        graph.on("node:contextmenu", ({ e, x, y, node, view }) => {
+            nodeRightClickFunction(e, x, y, node, view);
+        });
+
+        if (edgeChangeFunction) {
+            graph.on("edge:connected", (options) => {
+                edgeChangeFunction("Added", options);
+            });
+            graph.on("edge:removed", (options) => {
+                edgeChangeFunction("Removed", options);
+            });
+        }
+
+        if (edgeRightClickFunction) {
+            graph.on("edge:contextmenu", ({ e, x, y, edge, view }) => {
+                edgeRightClickFunction(e, x, y, edge, view);
+            });
+        }
+
         /* graph.use(
             //@ts-ignore
             new MiniMap({
@@ -96,10 +181,6 @@ namespace CustomComponent {
                 enabled: true,
             })
         );
-
-        graph.on("node:contextmenu", ({ e, x, y, node, view }) => {
-            nodeRightClickFunction(e, x, y, node, view);
-        });
     }
 
     export function destroy() {
@@ -121,13 +202,14 @@ namespace CustomComponent {
     const createCells = (items) => {
         const cells = [];
         items.forEach((item) => {
+            const shortenedId = item.id.replace(/-\w+$/, '');
             if ("source" in item) {
                 const edge = graph.createEdge(item);
-                edge.setAttrs({ body: { id: `edge-${item.id}` } });
+                edge.setAttrs({ line: { id: `edge-${shortenedId}` } });
                 cells.push(edge);
             } else {
                 const node = graph.createNode(item);
-                node.setAttrs({ body: { id: `node-${item.id}` } });
+                node.setAttrs({ body: { id: `node-${shortenedId}` } });
                 cells.push(node);
             }
         });
@@ -247,6 +329,12 @@ namespace CustomComponent {
     export function addDiagramFromJSON(data) {
         if (graph) {
             graph.fromJSON(data);
+        }
+    }
+
+    export function getCells() {
+        if (graph) {
+            return {edges: graph.getEdges(), nodes: graph.getNodes(), allCells: graph.getCells()};
         }
     }
 }

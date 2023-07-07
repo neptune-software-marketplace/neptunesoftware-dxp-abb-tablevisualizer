@@ -8,6 +8,12 @@ if (hasSelection && treeTablePackages.getSelectedIndices().length) {
     btnClearSelectedPckg.firePress();
 }
 
+/* if (selectedTables.length === 1) {
+    btnShowConnectedTables.setEnabled(true);
+} else {
+    btnShowConnectedTables.setEnabled(false);
+} */
+
 const selected = [];
 selectedTables.forEach((table) => {
     const context = table.getBindingContext("tableModeller_AllTables");

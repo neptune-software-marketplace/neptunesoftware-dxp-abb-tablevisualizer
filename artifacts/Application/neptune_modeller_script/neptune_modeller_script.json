@@ -40,7 +40,7 @@
 		"attributes": [],
 		"topLevelObjects": []
 	},
-	"ver": "23.6.21.146",
+	"ver": "23.6.28.1230",
 	"application": "neptune_modeller_script",
 	"title": "",
 	"description": "",
@@ -79,6 +79,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
 	"apis": [],
 	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
 }

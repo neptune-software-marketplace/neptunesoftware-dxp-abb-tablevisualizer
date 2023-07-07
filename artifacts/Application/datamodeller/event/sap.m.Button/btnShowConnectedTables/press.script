@@ -1,0 +1,29 @@
+const selectedTables = tableTables.getSelectedItems();
+
+const relatedTableIds = [];
+
+if (selectedTables[0].foreignKeys.length) {
+    selectedTables[0].foreignKeys.forEach((key) => {
+        relatedTableIds.push(key.referencedTableId);
+    });
+}
+
+/* data.forEach((table) => {
+    if (table.foreignKeys.length) {
+        const relatedTable = table.foreignKeys.find((key) => key.referencedTableId === tableId);
+        if (relatedTable) {
+            relatedTableIds.push(table.id);
+        }
+    }
+});
+
+const relatedTables = [selectedTable];
+
+data.forEach((table) => {
+    if (relatedTableIds.includes(table.id)) {
+        relatedTables.push(table);
+    }
+});
+//log.info(relatedTables);
+
+const formattedData = formatTableToX6Format(relatedTables); */
