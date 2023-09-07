@@ -1,23 +1,11 @@
 {
 	"id": "7e99a724-63e6-4693-a355-4c3b90e7f777",
-	"createdAt": "2023-06-12T12:14:57.882Z",
+	"createdAt": "2023-06-12T12:08:21.160Z",
 	"createdBy": "kristin.eliassen@neptune-software.com",
 	"objects": [
 		{
 			"fieldNo": 99999,
 			"data": [
-				{
-					"fieldNo": "1362ea9a-0a31-4d05-f58d-f9edd3c5948a",
-					"fieldName": "x6Script",
-					"fieldParent": 99999,
-					"fieldType": "neptune_modeller_script",
-					"script": "",
-					"customComponent": true,
-					"request": [],
-					"response": [],
-					"attributes": [],
-					"data": []
-				},
 				{
 					"fieldNo": "d3c34991-e253-4fcb-b96f-a9530e6a13be",
 					"fieldName": "namespace",
@@ -64,11 +52,11 @@
 		"attributes": [],
 		"topLevelObjects": []
 	},
-	"ver": "23.7.4.1655",
+	"ver": "23.8.25.1219",
 	"application": "neptune_modeller_graph",
 	"title": "",
 	"description": "",
-	"enableFileStorage": false,
+	"enableFileStorage": true,
 	"enableManifest": false,
 	"enableStylesheet": false,
 	"enableObfuscate": false,

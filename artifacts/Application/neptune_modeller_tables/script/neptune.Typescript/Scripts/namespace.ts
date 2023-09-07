@@ -1,16 +1,21 @@
 namespace CustomComponent {
+    export let graph = null;
+
     const graphConfig = {
-        nodeConfigName: "tableNode",
-        nodeConfig: TableModellerConfig.nodeConfig,
+        nodeConfig: Configuration.nodes,
+        edgeConfig: Configuration.edges,
+        connectionConfig: Configuration.connection,
         portLayoutName: "tablePortPosition",
-        portLayoutFunction: TableModellerConfig.tablePortPosition,
+        portLayoutFunction: Configuration.tablePortPosition,
         forcePortLayout: true,
-        edgeConfigName: "tableEdge",
-        edgeConfig: TableModellerConfig.edgeConfig,
-        connectionConfig: TableModellerConfig.connectionConfig,
-        overwriteNode: true,
-        overwriteEdge: true,
     };
+
+    export function graphIsRendered() {
+        const graphContainerId = graphContainer.getId();
+        const containerElement = document.getElementById(graphContainerId);
+        if (!containerElement) return false;
+        return containerElement.childNodes.length !== 0;
+    }
 
     export async function init() {
         const awaitDom = () => {
@@ -18,21 +23,25 @@ namespace CustomComponent {
             if (!containerDomRef) {
                 return setTimeout(awaitDom, 10);
             }
-            graphCore.init(
-                containerDomRef,
-                graphConfig,
-                openTableMenu,
-                onForeignKeyChange,
-                null,
-                confirmRemoveFK
-            );
+            graphCore.init(containerDomRef, graphConfig).then((data) => {
+                graph = data;
+                addEventListeners();
+            });
         };
         awaitDom();
 
         modelChangedTables.setData([]);
+        modelCurrentPositions.setData([]);
         modelAppControl.setData({
             changesMade: false,
         });
+    }
+
+    function saveNodePosition(node, x, y) {
+        const nodePosition = modelCurrentPositions.getData().find((x) => x.id === node.id);
+        if (!nodePosition) return;
+        nodePosition.position.x = x;
+        nodePosition.position.y = y;
     }
 
     export async function saveChanges() {
@@ -50,114 +59,16 @@ namespace CustomComponent {
             sap.m.MessageToast.show("Tables saved");
             displayTables(selectedTableIds);
             resetChanges();
-            const { nodes } = graphCore.getCells();
-            nodes.forEach((node) => {
-                const oldPosition = nodePositions.find((x) => x.id === node.id);
-                node.position(oldPosition.position.x, oldPosition.position.y);
-            });
         }
     }
 
     export function resetChanges() {
         modelChangedTables.setData([]);
-        //@ts-ignore
-        modelAppControl.oData.changesMade = false;
+        modelAppControl.getData().changesMade = false;
         modelAppControl.refresh(true);
     }
 
-    function onForeignKeyChange(changeAction: string, options) {
-        let updatedTable;
-
-        const edgeData = options.edge.store.data;
-
-        if (!edgeData.target.cell) return;
-
-        const selectedTables = modelSelectedTablesNeptune.getData();
-        const formattedTables = modelSelectedTablesFormatted.getData();
-        let changedTables = modelChangedTables.getData();
-
-        const fromTableId = edgeData.source.cell;
-        const fromTablePort = formattedTables
-            .find((table) => table.id === edgeData.source.cell)
-            .ports.find((port) => port.id === edgeData.source.port);
-
-        const toTableId = edgeData.target.cell;
-        const toTablePort = formattedTables
-            .find((table) => table.id === edgeData.target.cell)
-            .ports.find((port) => port.id === edgeData.target.port);
-
-        const fromTableNeptune = selectedTables.find((table) => table.id === fromTableId);
-        const toTableNeptune = selectedTables.find((table) => table.id === toTableId);
-
-        let fromTableCol;
-        if (fromTablePort.columnId === "") {
-            fromTableCol = {
-                name: "id",
-                id: "id",
-            };
-        } else {
-            fromTableCol = fromTableNeptune.fields.find((col) => col.id === fromTablePort.columnId);
-        }
-        const toTableCol = toTableNeptune.fields.find((col) => col.id === toTablePort.columnId);
-
-        let tableData = changedTables.find((table) => table.id === toTableId);
-        if (!tableData) {
-            tableData = selectedTables.find((table) => table.id === toTableId);
-        }
-
-        if (changeAction === "Added") {
-            const newForeignKey = TableModellerConfig.createNewForeignKey(
-                fromTableNeptune,
-                fromTableCol,
-                toTableCol
-            );
-
-            updatedTable = {
-                ...tableData,
-                foreignKeys: [...tableData.foreignKeys, newForeignKey],
-            };
-        }
-        if (changeAction === "Removed") {
-            // What if more than one column in the FK?
-            const updatedForeignKeys = toTableNeptune.foreignKeys.filter((key) => {
-                return (
-                    key.id !== edgeData.foreignKeyId ||
-                    (key.referencedTableId !== fromTableId &&
-                        key.columns[0].referencedColumnId !== fromTableCol.id) // TODO: Double check this logic
-                );
-            });
-            updatedTable = { ...tableData, foreignKeys: [...updatedForeignKeys] };
-        }
-
-        const existingTable = changedTables.find((table) => table.id === updatedTable.id);
-        if (existingTable) {
-            existingTable.foreignKeys = updatedTable.foreignKeys;
-        } else {
-            changedTables.push(updatedTable);
-        }
-        modelChangedTables.refresh(true);
-        //@ts-ignore
-        modelAppControl.oData.changesMade = true;
-        modelAppControl.refresh(true);
-    }
-
-    function confirmRemoveFK({ edge }) {
-        //@ts-ignore
-        new sap.m.MessageBox.confirm("This action will delete this foreign key. Continue?", {
-            title: "Delete foreign key",
-            onClose: (action) => {
-                if (action === "OK") {
-                    edge.remove();
-                }
-            },
-            styleClass: "",
-            actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
-            emphasizedAction: sap.m.MessageBox.Action.OK,
-            initialFocus: null,
-        });
-    }
-
-    function openTableMenu(node) {
+    function openTableMenu(node: X6Table) {
         const nodeHTMLElement = document.getElementById(`node-${node.id.replace(/-\w+$/, "")}`);
         modelPopoverMenu.setData(tableMenuActions);
         modelPopoverMenu.refresh();
@@ -173,28 +84,38 @@ namespace CustomComponent {
         }
         const tables = Array.isArray(tableData) ? tableData : [tableData];
         modelSelectedTablesNeptune.setData(tables);
-        const formattedData = TableModellerConfig.formatTablesToX6(tables);
+        const formattedData = Convert.toX6(tables);
+
+        formattedData.forEach((cell) => {
+            if (!Convert.isX6Table(cell)) return;
+            const newPositionNode = modelCurrentPositions.getData().find((x) => x.id === cell.id);
+            if (newPositionNode) {
+                cell.position.x = newPositionNode.position.x;
+                cell.position.y = newPositionNode.position.y;
+            }
+        });
+
         modelSelectedTablesFormatted.setData(formattedData);
 
         graphCore.addCells(formattedData);
+
+        // Save new positions
+        const tablePositions = formattedData
+            .filter(Convert.isX6Table)
+            .map((x) => ({ id: x.id, position: x.position }));
+
+        modelCurrentPositions.setData(tablePositions);
     }
 
     export function centerContent() {
         graphCore.centerContent();
     }
 
-    export function setBackground(color: string) {
-        graphCore.setBackground(color);
-    }
-
-    export function clearBackground() {
-        graphCore.clearBackground();
-    }
-
     export function clearGraph() {
-        graphCore.clearGraph();
+        graphCore.resetGraph();
         modelSelectedTablesFormatted.setData([]);
         modelSelectedTablesNeptune.setData([]);
+        modelCurrentPositions.setData([]);
     }
 
     export function undo() {
@@ -214,11 +135,12 @@ namespace CustomComponent {
     } */
 
     export function removeCells(nodeIds: string[]) {
-        graphCore.removeCells(nodeIds);
+        const cells = modelSelectedTablesFormatted.getData().filter((x) => nodeIds.includes(x.id));
+        graphCore.removeCells(cells);
     }
 
     export async function refreshSelection() {
-        graphCore.clearGraph();
+        graphCore.resetGraph();
         graphCore.addCells(modelSelectedTablesFormatted.getData());
     }
 
@@ -237,5 +159,46 @@ namespace CustomComponent {
 
     export function getCells() {
         return graphCore.getCells();
+    }
+
+    export function addEventListeners() {
+        graph.on("edge:connected", ({ edge }) => {
+            const variantEdge = graphConfig.edgeConfig.find((edge) => edge.name === "variant");
+            if (variantEdge) {
+                const edgeAttrs = {
+                    line: {
+                        //@ts-ignore
+                        ...variantEdge.config.attrs?.line,
+                        id: `edge-${edge.id}`,
+                    },
+                };
+                edge.setAttrs(edgeAttrs);
+            }
+            ForeignKey.updateFK("Add", edge);
+        });
+
+        graph.on("edge:mouseenter", ({ cell }) => {
+            cell.addTools([Configuration.btnDelete]);
+        });
+
+        graph.on("edge:mouseleave", ({ cell }) => {
+            if (cell.hasTool("button")) {
+                cell.removeTool("button");
+            }
+        });
+
+        // right-click
+        graph.on("node:contextmenu", ({ e, x, y, node, view }) => {
+            openTableMenu(node);
+        });
+
+        // right-click
+        graph.on("edge:contextmenu", ({ e, x, y, edge, view }) => {
+            ForeignKey.confirmRemove({ edge });
+        });
+
+        graph.on("node:moved", ({ e, x, y, node, view }) => {
+            saveNodePosition(node, x, y);
+        });
     }
 }

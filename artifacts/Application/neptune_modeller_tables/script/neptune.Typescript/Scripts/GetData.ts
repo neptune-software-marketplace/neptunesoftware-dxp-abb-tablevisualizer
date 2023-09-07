@@ -35,6 +35,12 @@ async function saveTables(data) {
         const savedTables = await Promise.all(savePromises);
         return savedTables;
     } catch (error) {
-        console.error(error);
+        //@ts-ignore
+        new sap.m.MessageBox.error(`There was a problem saving your changes.`, {
+            title: 'Could not save changes',
+            onClose: null,
+            styleClass: '',
+            actions: sap.m.MessageBox.Action.OK,
+        })
     }
 }

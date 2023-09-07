@@ -8,14 +8,15 @@ const tableMenuActions = [
         },
         icon: "sap-icon://hide",
     },
-    /* {
+    {
         text: "Definition",
         action: () => {
+            //@ts-ignore
             const tableId = textSourceId.getText();
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelSelectedTablesNeptune.oData.find((item) => item.id === tableId);
+                const table = modelSelectedTablesNeptune.getData().find((item) => item.id === tableId);
                 const redirectDetails = {
                     target: {
                         semanticObject: "tools",
@@ -24,8 +25,7 @@ const tableMenuActions = [
                     params: {
                         id: tableId,
                         name: table.name,
-                    },
-                    query: {},
+                    }
                 };
 
                 //@ts-ignore
@@ -42,7 +42,7 @@ const tableMenuActions = [
 
             if (tableId) {
                 //@ts-ignore
-                const table = modelSelectedTablesNeptune.oData.find((item) => item.id === tableId);
+                const table = modelSelectedTablesNeptune.getData().find((item) => item.id === tableId);
                 const redirectDetails = {
                     target: {
                         semanticObject: "tools",
@@ -51,8 +51,7 @@ const tableMenuActions = [
                     params: {
                         id: tableId,
                         name: table.name,
-                    },
-                    query: {},
+                    }
                 };
 
                 //@ts-ignore
@@ -60,5 +59,5 @@ const tableMenuActions = [
             }
         },
         icon: "sap-icon://fa-regular/folder-open",
-    }, */
+    },
 ];

@@ -258,6 +258,21 @@
 					"attributes": [],
 					"data": [
 						{
+							"fieldNo": "9903140a-1195-4575-afe2-2899b0ba377e",
+							"fieldName": "CurrentPositions",
+							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
+							"fieldType": "neptune.model",
+							"script": "",
+							"customComponent": false,
+							"bindingValue": "Generic Array",
+							"bindingType": "h",
+							"bindingSource": "P9",
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
 							"fieldNo": "92f1302e-9399-419e-eda8-b2c72a4d2578",
 							"fieldName": "AppControl",
 							"fieldParent": "ca8a46c9-d977-4266-fa5c-17e9e1294605",
@@ -676,6 +691,55 @@
 					"attributes": [],
 					"data": [
 						{
+							"fieldNo": "b8a2c2c2-5967-4d77-8691-18b3f5d9d69f",
+							"fieldName": "Types",
+							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
+							"fieldType": "neptune.folder",
+							"script": "",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": [
+								{
+									"fieldNo": "4e0df1be-f6e9-4e1a-e4cc-5635f0fe4b79",
+									"fieldName": "X6Types",
+									"fieldParent": "b8a2c2c2-5967-4d77-8691-18b3f5d9d69f",
+									"fieldType": "neptune.Typescript",
+									"script": "file://script/neptune.Typescript/Types/X6Types.ts",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								},
+								{
+									"fieldNo": "832d8024-684d-41b2-85da-66be922ea4fa",
+									"fieldName": "NeptuneTypes",
+									"fieldParent": "b8a2c2c2-5967-4d77-8691-18b3f5d9d69f",
+									"fieldType": "neptune.Typescript",
+									"script": "file://script/neptune.Typescript/Types/NeptuneTypes.ts",
+									"customComponent": false,
+									"request": [],
+									"response": [],
+									"attributes": [],
+									"data": []
+								}
+							]
+						},
+						{
+							"fieldNo": "a294087b-f8e8-4ca0-f4f2-f359f4cd0b2b",
+							"fieldName": "Util",
+							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
+							"fieldType": "neptune.Typescript",
+							"script": "file://script/neptune.Typescript/Scripts/Util.ts",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
 							"fieldNo": "59ed14f6-8d9a-486b-ffcb-26dc20516348",
 							"fieldName": "namespace",
 							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
@@ -688,23 +752,11 @@
 							"data": []
 						},
 						{
-							"fieldNo": "832d8024-684d-41b2-85da-66be922ea4fa",
-							"fieldName": "Types",
-							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
-							"fieldType": "neptune.Typescript",
-							"script": "file://script/neptune.Typescript/Scripts/Types.ts",
-							"customComponent": false,
-							"request": [],
-							"response": [],
-							"attributes": [],
-							"data": []
-						},
-						{
 							"fieldNo": "bedbfe07-87f4-4f99-e0db-73c0b5555dd0",
-							"fieldName": "getData",
+							"fieldName": "GetData",
 							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
 							"fieldType": "neptune.Typescript",
-							"script": "file://script/neptune.Typescript/Scripts/getData.ts",
+							"script": "file://script/neptune.Typescript/Scripts/GetData.ts",
 							"customComponent": false,
 							"request": [],
 							"response": [],
@@ -725,10 +777,34 @@
 						},
 						{
 							"fieldNo": "974ea86a-37b2-4235-c08c-5cc1ec345466",
-							"fieldName": "TableModellerConfig",
+							"fieldName": "Configuration",
 							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
 							"fieldType": "neptune.Typescript",
-							"script": "file://script/neptune.Typescript/Scripts/TableModellerConfig.ts",
+							"script": "file://script/neptune.Typescript/Scripts/Configuration.ts",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
+							"fieldNo": "99cf191f-851f-49dd-acef-af47ccc80f29",
+							"fieldName": "ForeignKey",
+							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
+							"fieldType": "neptune.Typescript",
+							"script": "file://script/neptune.Typescript/Scripts/ForeignKey.ts",
+							"customComponent": false,
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						},
+						{
+							"fieldNo": "005ab049-def7-44e6-e1a3-59c448fd404c",
+							"fieldName": "Convert",
+							"fieldParent": "cf659494-1144-43cf-f4b4-da798026b84f",
+							"fieldType": "neptune.Typescript",
+							"script": "file://script/neptune.Typescript/Scripts/Convert.ts",
 							"customComponent": false,
 							"request": [],
 							"response": [],
@@ -802,7 +878,7 @@
 			"sap.m.HBox"
 		]
 	},
-	"ver": "23.7.7.1429",
+	"ver": "23.9.1.97",
 	"application": "neptune_modeller_tables",
 	"title": "",
 	"description": "",

@@ -1,8 +1,19 @@
-sap.ui.getCore().attachInit(async function (startParams) {
+sap.ui.getCore().attachInit(function (startParams) {
     getTableData();
     tableModeller.init();
     modelSelected.setData({
-        package: '',
-        tables: []
-    })
+        package: "",
+        tables: [],
+    });
+    modelListTipsTricks.setData(tipsTricksListItems());
 });
+
+/* //@ts-ignore
+if (sap.n) {
+    //@ts-ignore
+    sap.n.Shell.attachBeforeDisplay(function (startParams) {
+        if (!tableModeller.graphIsRendered()) {
+            tableModeller.init();
+        }
+    });
+} */

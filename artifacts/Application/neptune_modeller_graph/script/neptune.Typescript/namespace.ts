@@ -1,41 +1,70 @@
 namespace CustomComponent {
-    let Graph;
-    let MiniMap;
+    let Graph = null;
+    let MiniMap = null;
+    let Stencil = null;
+    let Shape = null;
     let graph = null;
-    let nodeConfigName: string;
-    let edgeConfigName: string;
+    let stencilDrawer = null;
+    let nodeConfigNames = [];
+    let edgeConfigNames = [];
     let portLayoutName: string;
-
-    async function getX6Objects() {
-        //@ts-ignore
-        const X6Objects = await x6Script.getX6Objects();
-        return X6Objects;
-    }
 
     export function graphExists() {
         return graph !== null;
     }
     //let minimapContainer;
 
-    export async function init(
-        container: HTMLDivElement,
-        graphConfig: GraphConfig,
-        nodeRightClickFunction = null,
-        edgeChangeFunction = null,
-        edgeRightClickFunction = null,
-        deleteEdgeFunction = null
-    ) {
+    async function checkGetX6Object() {
+        return new Promise((resolve, reject) => {
+            const checkExistence = () => {
+                if (typeof getX6Object === "function") {
+                    resolve(getX6Object());
+                } else {
+                    setTimeout(checkExistence, 10);
+                }
+            };
+
+            checkExistence();
+        });
+    }
+
+    export async function init(container: HTMLDivElement, graphConfig: GraphConfig) {
         const containerDiv = container;
 
-        const X6Objects = await getX6Objects();
+        const X6Objects = await checkGetX6Object();
         //@ts-ignore
         Graph = X6Objects.Graph;
         //@ts-ignore
         MiniMap = X6Objects.MiniMap;
+        //@ts-ignore
+        Stencil = X6Objects.Stencil;
+        //@ts-ignore
+        Shape = X6Objects.Shape;
 
         if (graph) {
             destroy();
         }
+
+        graphConfig.connectionConfig;
+
+        graph = new Graph({
+            container: containerDiv,
+            connecting: {
+                ...graphConfig.connectionConfig,
+                createEdge() {
+                    return new Shape.Edge(graphConfig.edgeConfig[0].config);
+                },
+            },
+            autoResize: true,
+            panning: {
+                enabled: true,
+                eventTypes: ["leftMouseDown"],
+            },
+            mousewheel: {
+                enabled: true,
+                modifiers: ["ctrl", "meta"],
+            },
+        });
 
         if (
             graphConfig.portLayoutFunction &&
@@ -51,129 +80,20 @@ namespace CustomComponent {
             );
         }
 
-        nodeConfigName = graphConfig.nodeConfigName;
-        edgeConfigName = graphConfig.edgeConfigName;
-
-        //@ts-ignore
-        Graph.registerNode(
-            graphConfig.nodeConfigName,
-            graphConfig.nodeConfig,
-            graphConfig.overwriteNode
-        );
-
-        //@ts-ignore
-        Graph.registerEdge(
-            graphConfig.edgeConfigName,
-            //@ts-ignore
-            graphConfig.edgeConfig?.default,
-            graphConfig.overwriteEdge
-        );
-
-        //@ts-ignore
-        graph = new Graph({
-            container: containerDiv,
-            connecting: graphConfig.connectionConfig,
-            autoResize: true,
-            panning: {
-                enabled: true,
-                eventTypes: ["leftMouseDown"],
-            },
-            mousewheel: {
-                enabled: true,
-                modifiers: ["ctrl", "meta"],
-            },
+        graphConfig.nodeConfig.forEach((node) => {
+            Graph.registerNode(node.name, node.config, node.overwrite);
+            nodeConfigNames.push(node.name);
         });
 
-        // Styles connections drawn by user
-        graph.on("edge:connected", ({ edge }) => {
-            const edgeAttrs = {
-                line: {
-                    //@ts-ignore
-                    ...graphConfig.edgeConfig?.variant?.attrs?.line,
-                    id: `edge-${edge.id}`,
-                },
-            };
-            edge.setAttrs(edgeAttrs);
+        graphConfig.edgeConfig.forEach((edge) => {
+            Graph.registerEdge(
+                edge.name,
+                //@ts-ignore
+                edge.config,
+                edge.overwrite
+            );
+            edgeConfigNames.push(edge.name);
         });
-
-        if (deleteEdgeFunction) {
-            const btnDelete = {
-                name: "button",
-                args: {
-                    markup: [
-                        {
-                            tagName: "circle",
-                            selector: "button",
-                            attrs: {
-                                r: 12,
-                                stroke: 'var(--nepHighlightColor)',
-                                fill: 'var(--nepBaseColor)',
-                                strokeWidth: 2,
-                                cursor: 'pointer'
-                            },
-                        },
-                        {
-                            tagName: 'text',
-                            textContent: 'X',
-                            selector: 'icon',
-                            attrs: {
-                                fill: 'var(--nepHighlightColor)',
-                                fontSize: 10,
-                                textAnchor: 'middle',
-                                pointerEvents: 'none',
-                                y: '0.3em'
-                            }
-                        }
-                    ],
-                    distance: -35,
-                    onClick({ view }) {
-                        const edge = view.cell;
-                        const source = edge.getSource();
-                        const target = edge.getTarget();
-                        deleteEdgeFunction({ view, edge, source, target });
-                    },
-                },
-            };
-
-            graph.on("edge:mouseenter", ({ cell }) => {
-                cell.addTools([btnDelete]);
-            });
-
-            graph.on("edge:mouseleave", ({ cell }) => {
-                if (cell.hasTool("button")) {
-                    cell.removeTool("button");
-                }
-            });
-        }
-
-        graph.on("node:contextmenu", ({ e, x, y, node, view }) => {
-            nodeRightClickFunction(e, x, y, node, view);
-        });
-
-        if (edgeChangeFunction) {
-            graph.on("edge:connected", (options) => {
-                edgeChangeFunction("Added", options);
-            });
-            graph.on("edge:removed", (options) => {
-                edgeChangeFunction("Removed", options);
-            });
-        }
-
-        if (edgeRightClickFunction) {
-            graph.on("edge:contextmenu", ({ e, x, y, edge, view }) => {
-                edgeRightClickFunction(e, x, y, edge, view);
-            });
-        }
-
-        /* graph.use(
-            //@ts-ignore
-            new MiniMap({
-                container: minimapContainer,
-                width: 200,
-                height: 160,
-                scalable: true,
-            })
-        ); */
 
         graph.use(
             //@ts-ignore
@@ -181,15 +101,28 @@ namespace CustomComponent {
                 enabled: true,
             })
         );
+
+        if (graphConfig.minimap) {
+            graph.use(
+                new MiniMap({
+                    container: graphConfig.minimap.container,
+                    width: graphConfig.minimap.width ?? 200,
+                    height: graphConfig.minimap.height ?? 160,
+                    padding: graphConfig.minimap.padding ?? 10,
+                })
+            );
+        }
+
+        return graph;
     }
 
     export function destroy() {
-        if (nodeConfigName) {
-            Graph.unregisterNode(nodeConfigName);
-        }
-        if (edgeConfigName) {
-            Graph.unregisterEdge(edgeConfigName);
-        }
+        nodeConfigNames.forEach((node) => {
+            Graph.unregisterNode(node);
+        });
+        edgeConfigNames.forEach((edge) => {
+            Graph.unregisterNode(edge);
+        });
         if (portLayoutName) {
             Graph.unregisterPortLayout(portLayoutName);
         }
@@ -199,22 +132,46 @@ namespace CustomComponent {
         }
     }
 
+    export function initStencil(options) {
+        if (graph) {
+            options.target = graph;
+            stencilDrawer = new Stencil(options);
+            return stencilDrawer;
+        }
+    }
+
+    /* export function destroyStencil() {
+        if (stencilDrawer) {
+
+        }
+    } */
+
     const createCells = (items) => {
         const cells = [];
         items.forEach((item) => {
-            const shortenedId = item.id.replace(/-\w+$/, '');
+            const shortenedId = item.id.replace(/-\w+$/, "");
             if ("source" in item) {
                 const edge = graph.createEdge(item);
                 edge.setAttrs({ line: { id: `edge-${shortenedId}` } });
                 cells.push(edge);
             } else {
-                const node = graph.createNode(item);
+                const node = createNode(item);
                 node.setAttrs({ body: { id: `node-${shortenedId}` } });
                 cells.push(node);
             }
         });
         return cells;
     };
+
+    export function createNode(config) {
+        return graph.createNode(config);
+    }
+
+    export function addNode(node) {
+        if (graph) {
+            graph.addNode(node);
+        }
+    }
 
     export function addCells(formattedItems) {
         const cells = createCells(formattedItems);
@@ -253,20 +210,6 @@ namespace CustomComponent {
         }
     }
 
-    export function setBackground(color: string) {
-        if (graph) {
-            graph.drawBackground({
-                color,
-            });
-        }
-    }
-
-    export function clearBackground() {
-        if (graph) {
-            graph.clearBackground();
-        }
-    }
-
     export function toggleHistory(): boolean {
         if (graph.isHistoryEnabled()) {
             graph.disableHistory();
@@ -288,9 +231,13 @@ namespace CustomComponent {
         }
     }
 
-    export function clearGraph() {
+    export function resetGraph(nodes = null) {
         if (graph) {
-            graph.clearCells();
+            if (!nodes) {
+                graph.clearCells({ silent: false });
+            } else {
+                graph.resetCells(nodes, { silent: false });
+            }
         }
     }
 
@@ -314,27 +261,33 @@ namespace CustomComponent {
         }
     } */
 
-    export function removeCells(cells) {
-        if (graph) {
-            graph.removeCells(cells);
-        }
+    export function removeCells(cells: []) {
+        if (!graph) return;
+        graph.removeCells(cells);
     }
 
     export function getJSONview() {
-        if (graph) {
-            return graph.toJSON();
-        }
+        if (!graph) return;
+        return graph.toJSON();
     }
 
     export function addDiagramFromJSON(data) {
-        if (graph) {
-            graph.fromJSON(data);
-        }
+        if (!graph) return;
+        graph.fromJSON(data);
     }
 
     export function getCells() {
-        if (graph) {
-            return {edges: graph.getEdges(), nodes: graph.getNodes(), allCells: graph.getCells()};
-        }
+        if (!graph) return;
+        return { edges: graph.getEdges(), nodes: graph.getNodes(), allCells: graph.getCells() };
+    }
+
+    export function zoomOut() {
+        if (!graph) return;
+        graph.zoom(-0.2);
+    }
+
+    export function zoomIn() {
+        if (!graph) return;
+        graph.zoom(0.2);
     }
 }

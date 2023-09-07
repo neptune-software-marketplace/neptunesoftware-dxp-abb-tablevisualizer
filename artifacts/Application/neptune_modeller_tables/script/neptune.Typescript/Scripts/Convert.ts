@@ -1,12 +1,9 @@
-namespace TableModellerConfig {
-    const NODE_WIDTH = 300;
-    const LINE_HEIGHT = 24;
-
-    const isX6Table = (obj: any): obj is X6Table => {
-        return "ports" in obj && obj["shape"] === "tableNode";
+namespace Convert {
+    export const isX6Table = (obj: any): obj is X6Table => {
+        return "ports" in obj && "position" in obj;
     };
 
-    export function formatTablesToX6(tableArray: NeptuneTable[]) {
+    export function toX6(tableArray: NeptuneTable[]) {
         let formattedData: (X6Table | X6TableForeignKey)[] = [];
 
         tableArray.forEach((table, index) => {
@@ -18,8 +15,8 @@ namespace TableModellerConfig {
             formattedTable.id = table.id;
             formattedTable.shape = "tableNode";
             formattedTable.label = table.name;
-            formattedTable.width = 300;
-            formattedTable.height = 24;
+            formattedTable.width = Configuration.NODE_WIDTH;
+            formattedTable.height = Configuration.LINE_HEIGHT;
             formattedTable.position = {
                 x: positionX,
                 y: positionY,
@@ -101,6 +98,7 @@ namespace TableModellerConfig {
             });
             formattedData.push(formattedTable);
         });
+
         // Add connections
         tableArray.forEach((table) => {
             if (table.foreignKeys.length) {
@@ -111,12 +109,13 @@ namespace TableModellerConfig {
                         formattedLink.foreignKeyId = key.id;
                         //@ts-ignore
                         formattedLink.id = ModelData.genID();
-                        formattedLink.shape = "tableEdge";
+                        formattedLink.shape = "default";
 
                         const isCompositeKey = key.columns.length > 1;
                         if (isCompositeKey) {
                             formattedLink.label = `FK ${index + 1}`;
                         }
+                        formattedLink.isCompositeKey = isCompositeKey;
 
                         const fromTable = formattedData.find(
                             (formattedTable) => formattedTable.label === key.referencedTable
@@ -167,7 +166,11 @@ namespace TableModellerConfig {
         return formattedData;
     }
 
-    export function createNewForeignKey(fromTable: NeptuneTable, fromColumn: NeptuneTableColumn, toColumn: NeptuneTableColumn) {
+    export function createNeptuneForeignKey(
+        fromTable: NeptuneTable,
+        fromColumn: NeptuneTableColumn,
+        toColumn: NeptuneTableColumn
+    ): NeptuneForeignKey {
         const newForeignKey = {
             id: ModelData.genID(),
             name: "",
@@ -188,155 +191,4 @@ namespace TableModellerConfig {
 
         return newForeignKey;
     }
-
-    export const nodeConfig = {
-        //@ts-ignore
-        inherit: "rect",
-        markup: [
-            {
-                tagName: "rect",
-                selector: "body",
-            },
-            {
-                tagName: "text",
-                selector: "label",
-            },
-        ],
-        attrs: {
-            rect: {
-                strokeWidth: 1,
-                stroke: "var(--nepBrandYellow)",
-                fill: "var(--nepBrandYellow)",
-            },
-            label: {
-                fontWeight: "bold",
-                fill: "black",
-                fontSize: 14,
-            },
-        },
-        ports: {
-            groups: {
-                list: {
-                    markup: [
-                        {
-                            tagName: "rect",
-                            selector: "portBody",
-                        },
-                        {
-                            tagName: "text",
-                            selector: "portNameLabel",
-                        },
-                        {
-                            tagName: "text",
-                            selector: "portTypeLabel",
-                        },
-                        {
-                            tagName: "text",
-                            selector: "portProperties",
-                        },
-                    ],
-                    attrs: {
-                        portBody: {
-                            width: NODE_WIDTH,
-                            height: LINE_HEIGHT,
-                            strokeWidth: 1,
-                            stroke: "var(--nepBrandYellow)",
-                            fill: "#eff1f2",
-                            magnet: true,
-                        },
-                        portNameLabel: {
-                            ref: "portBody",
-                            refX: 6,
-                            refY: 6,
-                            fontSize: 12,
-                            textWrap: {
-                                width: "60%",
-                                ellipsis: true,
-                                breakWord: true,
-                            },
-                        },
-                        portTypeLabel: {
-                            ref: "portBody",
-                            refX: "65%",
-                            refY: 6,
-                            fontSize: 12,
-                        },
-                        portProperties: {
-                            ref: "portBody",
-                            refX: "92%",
-                            refY: 6,
-                            fontSize: 12,
-                        },
-                    },
-                    position: "tablePortPosition",
-                },
-            },
-        },
-    };
-
-    export const edgeConfig = {
-        default: {
-            inherit: "edge",
-            attrs: {
-                line: {
-                    stroke: "var(--nepBrandYellow)",
-                    strokeWidth: 2,
-                },
-            },
-        },
-        variant: {
-            inherit: "edge",
-            attrs: {
-                line: {
-                    stroke: "var(--nepHighlightColor)",
-                    strokeWidth: 2,
-                },
-            },
-        },
-    };
-
-    export const tablePortPosition = (portsPositionArgs) => {
-        return portsPositionArgs.map((_, index) => {
-            return {
-                position: {
-                    x: 0,
-                    y: (index + 1) * 24,
-                },
-                angle: 0,
-            };
-        });
-    };
-
-    export const connectionConfig = {
-        router: {
-            name: "er",
-            args: {
-                offset: 0,
-                direction: "H",
-            },
-        },
-        allowBlank: false,
-        allowNode: false,
-        allowLoop: false,
-        allowEdge: false,
-        validateConnection: function (this, args) {
-            if (args.sourceCell === args.targetCell) return false;
-            const sourcePort = args.sourceCell.ports.items.find(
-                (port) => port.id === args.sourcePort
-            );
-            const targetPort = args.targetCell.ports.items.find(
-                (port) => port.id === args.targetPort
-            );
-            if (targetPort.isPrimary) return false;
-            if (!sourcePort.isUnique || !sourcePort.isPrimary) return false;
-            if (sourcePort.dataType !== targetPort.dataType) return false;
-            return true;
-        },
-        validateMagnet({ e, view, cell, magnet }) {
-            const portId = magnet.parentElement.getAttribute("port");
-            const port = cell.getPort(portId);
-            if (!port.isUnique || !port.isPrimary) return false;
-            return true;
-        },
-    };
 }
