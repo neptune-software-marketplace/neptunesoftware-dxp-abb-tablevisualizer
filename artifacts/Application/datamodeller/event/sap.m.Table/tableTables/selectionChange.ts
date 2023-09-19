@@ -1,6 +1,8 @@
-const selectedTables = tableTables.getSelectedItems();
+tabBarTableSelection.setBusy(true);
 
-const hasSelection = selectedTables.length > 0;
+const selectedTables = modeltableModeller_AllTables.getData().filter((item) => item.selected);
+
+const hasSelection = !!selectedTables.length;
 butTablesToggleSelected.setEnabled(hasSelection);
 btnClearSelectedTables.setEnabled(hasSelection);
 
@@ -8,14 +10,20 @@ if (hasSelection && treeTablePackages.getSelectedIndices().length) {
     btnClearSelectedPckg.firePress();
 }
 
-const selected = [];
-selectedTables.forEach((table) => {
-    const context = table.getBindingContext("tableModeller_AllTables");
-    const tableData = context.getObject();
-    //@ts-ignore
-    selected.push(tableData.id);
-});
-//@ts-ignore
-modelSelected.oData.tables = selected;
+const selectedIds = selectedTables.map((table) => table.id);
 
-tableModeller.displayTables(selected);
+const currentlySelected = modelSelected.getData();
+
+currentlySelected.tables = selectedIds;
+modelSelected.refresh(true);
+
+filterTables();
+
+tableModeller
+    .displayTables(currentlySelected.tables)
+    .then((data) => tabBarTableSelection.setBusy(false));
+
+if (!selectedIds.length) {
+    butTablesToggleSelected.setPressed(false);
+    butTablesToggleSelected.firePress();
+}

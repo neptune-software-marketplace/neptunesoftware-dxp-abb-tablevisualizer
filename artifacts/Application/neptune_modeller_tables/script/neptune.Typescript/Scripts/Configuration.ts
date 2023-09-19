@@ -157,14 +157,14 @@ namespace Configuration {
                 (port) => port.id === args.targetPort
             );
             if (targetPort.isPrimary) return false;
-            if (!sourcePort.isUnique || !sourcePort.isPrimary) return false;
+            if (!sourcePort.isUnique) return false;
             if (sourcePort.dataType !== targetPort.dataType) return false;
             return true;
         },
         validateMagnet({ e, view, cell, magnet }) {
             const portId = magnet.parentElement.getAttribute("port");
             const port = cell.getPort(portId);
-            if (!port.isUnique || !port.isPrimary) return false;
+            if (!port.isUnique) return false;
             return true;
         },
     };

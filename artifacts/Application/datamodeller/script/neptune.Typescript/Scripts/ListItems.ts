@@ -28,3 +28,21 @@ function tipsTricksListItems () {
     ]
     return listItems;
 }
+
+function legendListItems () {
+    const listItems = [
+        {
+            code: 'P',
+            description: 'Primary key'
+        },
+        {
+            code: 'U',
+            description: 'Unique'
+        },
+        {
+            code: 'N',
+            description: 'Nullable'
+        },
+    ]
+    return listItems;
+}

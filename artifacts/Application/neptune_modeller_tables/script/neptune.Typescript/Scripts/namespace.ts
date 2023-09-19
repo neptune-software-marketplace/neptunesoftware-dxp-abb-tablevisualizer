@@ -54,6 +54,7 @@ namespace CustomComponent {
         });
         const selectedTableIds = modelSelectedTablesNeptune.getData().map((table) => table.id);
         const changedTables = modelChangedTables.getData();
+
         const savedTables = await saveTables(changedTables);
         if (savedTables) {
             sap.m.MessageToast.show("Tables saved");
@@ -159,6 +160,11 @@ namespace CustomComponent {
 
     export function getCells() {
         return graphCore.getCells();
+    }
+
+    export function getEdges() {
+        if (!graph) return
+        return graph.getEdges();
     }
 
     export function addEventListeners() {

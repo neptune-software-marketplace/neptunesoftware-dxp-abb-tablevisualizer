@@ -6,14 +6,5 @@ sap.ui.getCore().attachInit(function (startParams) {
         tables: [],
     });
     modelListTipsTricks.setData(tipsTricksListItems());
+    modelListLegend.setData(legendListItems());
 });
-
-/* //@ts-ignore
-if (sap.n) {
-    //@ts-ignore
-    sap.n.Shell.attachBeforeDisplay(function (startParams) {
-        if (!tableModeller.graphIsRendered()) {
-            tableModeller.init();
-        }
-    });
-} */

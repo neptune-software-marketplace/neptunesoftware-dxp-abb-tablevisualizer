@@ -1,0 +1,19 @@
+new sap.m.MessageBox.warning(
+    "This action will delete any and all foreign keys currently displayed. Continue?",
+    {
+        title: "Delete foreign keys",
+        onClose: (action) => {
+            if (action === "OK") {
+                const foreignKeys = tableModeller.getEdges();
+
+                foreignKeys.forEach((key) => {
+                    ForeignKey.updateFK("Remove", key);
+                });
+            }
+        },
+        styleClass: "",
+        actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
+        emphasizedAction: sap.m.MessageBox.Action.OK,
+        initialFocus: null,
+    }
+);

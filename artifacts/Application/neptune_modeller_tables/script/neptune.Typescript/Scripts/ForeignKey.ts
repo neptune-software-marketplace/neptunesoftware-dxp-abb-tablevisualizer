@@ -35,21 +35,16 @@ namespace ForeignKey {
 
     function removeFK(
         tableData: NeptuneTable,
-        toTableNeptune: NeptuneTable,
         edgeData,
         fromTableId: string,
         fromTableCol: NeptuneTableColumn
     ) {
-        const updatedForeignKeys = toTableNeptune.foreignKeys.filter((key) => {
-            const columnIds = key.columns.map((column) => column.id);
+        const updatedForeignKeys = tableData.foreignKeys.filter((key) => {
+            const columnIds = key.columns.map((col) => col.referencedColumnId);
             return (
-                key.id !== edgeData.foreignKeyId ||
-                (key.referencedTableId !== fromTableId && !columnIds.includes(fromTableCol.id))
+                key.id !== edgeData.foreignKeyId && !columnIds.includes(fromTableCol.id)
             );
         });
-
-        const identicalArrays = Util.areSameArrays(updatedForeignKeys, toTableNeptune.foreignKeys);
-        if (identicalArrays) return;
 
         return { ...tableData, foreignKeys: [...updatedForeignKeys] };
     }
@@ -114,6 +109,7 @@ namespace ForeignKey {
         } = getFKSourceAndTarget(edge);
 
         let tableData = changedTables.find((table) => table.id === toTableId);
+
         let tableAlreadyChanged = tableData ? true : false;
         if (!tableData) {
             tableData = selectedTables.find((table) => table.id === toTableId);
@@ -124,6 +120,7 @@ namespace ForeignKey {
             const existingFK = tableData.foreignKeys.find((key) =>
                 key.columns.find((col) => col.id === toTableCol.id)
             );
+
             if (existingFK) {
                 //@ts-ignore
                 new sap.m.MessageBox.error(
@@ -146,7 +143,7 @@ namespace ForeignKey {
         if (changeAction === "Remove") {
             const edgeData = edge.store.data;
 
-            updatedTable = removeFK(tableData, toTableNeptune, edgeData, fromTableId, fromTableCol);
+            updatedTable = removeFK(tableData, edgeData, fromTableId, fromTableCol);
 
             if (edgeData.isCompositeKey) {
                 const allEdges = CustomComponent.graph.getEdges();
@@ -159,7 +156,7 @@ namespace ForeignKey {
             } else {
                 edge.remove();
             }
-        } 
+        }
 
         if (!updatedTable) return;
 
