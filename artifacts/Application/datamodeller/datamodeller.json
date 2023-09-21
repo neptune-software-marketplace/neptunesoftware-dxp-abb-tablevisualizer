@@ -1378,6 +1378,13 @@
 																			"translation": []
 																		},
 																		{
+																			"attribute": "sticky",
+																			"grouping": "Properties",
+																			"value": "[\"ColumnHeaders\"]",
+																			"script": "",
+																			"translation": []
+																		},
+																		{
 																			"attribute": "setSizeLimit",
 																			"grouping": "Model",
 																			"value": "1000",
@@ -2637,7 +2644,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.9.21.151",
+	"ver": "23.9.21.1517",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
