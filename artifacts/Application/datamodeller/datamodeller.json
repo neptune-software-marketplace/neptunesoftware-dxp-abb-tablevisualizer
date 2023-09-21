@@ -541,7 +541,7 @@
 												{
 													"attribute": "enabled",
 													"grouping": "Properties",
-													"value": "{= !!${Selected>/tables}.length}",
+													"value": "{= !!${Selected>/tables}.length || !!${Selected>/package}}",
 													"script": "",
 													"translation": []
 												},
@@ -590,7 +590,7 @@
 												{
 													"attribute": "enabled",
 													"grouping": "Properties",
-													"value": "{= !!${Selected>/tables}.length}",
+													"value": "{= !!${Selected>/tables}.length || !!${Selected>/package}}",
 													"script": "",
 													"translation": []
 												},
@@ -638,7 +638,7 @@
 												{
 													"attribute": "enabled",
 													"grouping": "Properties",
-													"value": "{= !!${Selected>/tables}.length}",
+													"value": "{= !!${Selected>/tables}.length || !!${Selected>/package}}",
 													"script": "",
 													"translation": []
 												},
@@ -2637,7 +2637,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.9.19.1556",
+	"ver": "23.9.21.151",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
