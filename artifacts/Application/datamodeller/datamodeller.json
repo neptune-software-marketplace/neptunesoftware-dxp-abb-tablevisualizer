@@ -1768,48 +1768,6 @@
 																	"response": [],
 																	"attributes": [],
 																	"data": []
-																},
-																{
-																	"fieldNo": "239cbca8-d76f-460b-acf8-fd1583cba9ae",
-																	"fieldName": "btnClearSelectedPckg",
-																	"fieldParent": "b54e6b3b-8922-4e5f-c919-e999316ab399",
-																	"fieldType": "sap.m.Button",
-																	"script": "",
-																	"customComponent": false,
-																	"request": [],
-																	"response": [],
-																	"attributes": [
-																		{
-																			"attribute": "text",
-																			"grouping": "Properties",
-																			"value": "Clear selection",
-																			"script": "",
-																			"translation": []
-																		},
-																		{
-																			"attribute": "icon",
-																			"grouping": "Properties",
-																			"value": "sap-icon://multiselect-none",
-																			"script": "",
-																			"translation": []
-																		},
-																		{
-																			"attribute": "enabled",
-																			"grouping": "Properties",
-																			"value": "false",
-																			"script": "",
-																			"translation": []
-																		},
-																		{
-																			"attribute": "press",
-																			"grouping": "Events",
-																			"value": "Anonymous Function",
-																			"script": "file://event/sap.m.Button/btnClearSelectedPckg/press.js",
-																			"language": "javascript",
-																			"translation": []
-																		}
-																	],
-																	"data": []
 																}
 															]
 														},
@@ -2644,7 +2602,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.9.21.1517",
+	"ver": "23.9.22.954",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",

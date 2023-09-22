@@ -7,7 +7,9 @@ butTablesToggleSelected.setEnabled(hasSelection);
 btnClearSelectedTables.setEnabled(hasSelection);
 
 if (hasSelection && treeTablePackages.getSelectedIndices().length) {
-    btnClearSelectedPckg.firePress();
+    modelSelected.getData().package = "";
+    modelSelected.refresh(true);
+    tableModeller.clearGraph();
 }
 
 const selectedIds = selectedTables.map((table) => table.id);

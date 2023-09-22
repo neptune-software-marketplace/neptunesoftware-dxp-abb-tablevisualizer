@@ -67,9 +67,6 @@ function filterPackages() {
     const searchValue = searchPackage.getValue();
     const binding = treeTablePackages.getBinding("rows");
 
-    //@ts-ignore
-    binding.filter([]);
-
     if (searchValue) {
         //@ts-ignore
         binding.filter([
@@ -99,6 +96,9 @@ function filterPackages() {
                 and: false,
             }),
         ]);
+    } else {
+        //@ts-ignore
+        binding.filter([]);
     }
 
     treeTablePackages.expandToLevel(99);

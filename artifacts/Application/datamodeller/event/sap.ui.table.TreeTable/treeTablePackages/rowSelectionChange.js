@@ -1,15 +1,20 @@
-const selectedPackageIndex = treeTablePackages.getSelectedIndices();
+const context = oEvent.getParameter("rowContext");
 
-const selectedRow = treeTablePackages.getRows()[selectedPackageIndex];
+if (!context) {
+    return;
+}
 
-btnClearSelectedPckg.setEnabled(!!selectedRow);
+const selectedPackage = context.getObject();
 
-if (selectedRow && tableTables.getSelectedItems().length) {
+if (selectedPackage.parent) {
+    return;
+}
+
+if (selectedPackage && tableTables.getSelectedItems().length) {
     btnClearSelectedTables.firePress();
 }
 
-if (selectedRow) {
-    const selectedPackage = selectedRow.getBindingContext().getObject();
+if (selectedPackage) {
     modelSelected.getData().package = selectedPackage.id;
     modelSelected.refresh(true);
 
@@ -18,7 +23,7 @@ if (selectedRow) {
         tableModeller.displayTables(packageTableIds);
     }
 } else {
-    modelSelected.getData().package = '';
+    modelSelected.getData().package = "";
     modelSelected.refresh(true);
     tableModeller.clearGraph();
 }

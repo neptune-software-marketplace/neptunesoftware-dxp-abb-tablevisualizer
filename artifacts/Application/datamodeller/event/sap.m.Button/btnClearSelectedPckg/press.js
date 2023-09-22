@@ -1,3 +1,0 @@
-treeTablePackages.clearSelection();
-
-treeTablePackages.fireRowSelectionChange();
