@@ -55,7 +55,10 @@ namespace CustomComponent {
         const selectedTableIds = modelSelectedTablesNeptune.getData().map((table) => table.id);
         const changedTables = modelChangedTables.getData();
 
-        const savedTables = await saveTables(changedTables);
+        // Only save changed tables currently displayed
+        const displayedChangedTables = changedTables.filter(table => selectedTableIds.includes(table.id));
+
+        const savedTables = await saveTables(displayedChangedTables);
         if (savedTables) {
             sap.m.MessageToast.show("Tables saved");
             displayTables(selectedTableIds);
