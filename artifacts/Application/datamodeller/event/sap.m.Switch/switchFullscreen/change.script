@@ -1,0 +1,13 @@
+const isOn = switchFullscreen.getState();
+
+if (!isOn) {
+    layoutTableSelection.setSize("40%");
+    layoutTableSelection.setResizable(true);
+    setTimeout(function () {
+        layoutTableSelection.rerender();
+    }, 10);
+} else {
+    // Fullscreen
+    layoutTableSelection.setSize("0px");
+    layoutTableSelection.setResizable(false);
+}

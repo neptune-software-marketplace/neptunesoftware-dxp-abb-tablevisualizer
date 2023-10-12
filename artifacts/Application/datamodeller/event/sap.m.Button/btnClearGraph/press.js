@@ -7,6 +7,6 @@ tableTables.fireSelectionChange();
 treeTablePackages.clearSelection();
 treeTablePackages.fireRowSelectionChange();
 
-butMenuToggleSide.setPressed(true);
-butMenuToggleSide.firePress();
+switchFullscreen.setState(false);
+switchFullscreen.fireChange();
 

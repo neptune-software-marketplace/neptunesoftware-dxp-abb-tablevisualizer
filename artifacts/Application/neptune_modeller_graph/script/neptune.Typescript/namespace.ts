@@ -16,15 +16,11 @@ namespace CustomComponent {
 
     async function checkGetX6Object() {
         return new Promise((resolve, reject) => {
-            const checkExistence = () => {
-                if (typeof getX6Object === "function") {
-                    resolve(getX6Object());
-                } else {
-                    setTimeout(checkExistence, 10);
-                }
-            };
-
-            checkExistence();
+            if (typeof getX6Object === "function") {
+                resolve(getX6Object());
+            } else {
+                resolve(graphScript.getX6Objects());
+            }
         });
     }
 
@@ -133,11 +129,12 @@ namespace CustomComponent {
     }
 
     export function initStencil(options) {
-        if (graph) {
-            options.target = graph;
-            stencilDrawer = new Stencil(options);
-            return stencilDrawer;
+        if (!graph) {
+            return;
         }
+        options.target = graph;
+        stencilDrawer = new Stencil(options);
+        return stencilDrawer;
     }
 
     /* export function destroyStencil() {
@@ -164,21 +161,26 @@ namespace CustomComponent {
     };
 
     export function createNode(config) {
+        if (!graph) {
+            return;
+        }
         return graph.createNode(config);
     }
 
     export function addNode(node) {
-        if (graph) {
-            graph.addNode(node);
+        if (!graph) {
+            return;
         }
+        graph.addNode(node);
     }
 
     export function addCells(formattedItems) {
         const cells = createCells(formattedItems);
-        if (graph) {
-            graph.resetCells(cells);
-            graph.zoomToFit({ padding: 10, maxScale: 1 });
+        if (!graph) {
+            return;
         }
+        graph.resetCells(cells);
+        graph.zoomToFit({ padding: 10, maxScale: 1 });
     }
 
     export function toggleEdgeVisibility() {
@@ -197,20 +199,27 @@ namespace CustomComponent {
     }
 
     export function togglePanning() {
+        if (!graph) {
+            return;
+        }
         graph.togglePanning();
     }
 
     export function centerContent() {
-        if (graph) {
-            graph.centerContent();
-            graph.zoomToFit({
-                padding: 20,
-                maxScale: 2,
-            });
+        if (!graph) {
+            return;
         }
+        graph.centerContent();
+        graph.zoomToFit({
+            padding: 20,
+            maxScale: 2,
+        });
     }
 
     export function toggleHistory(): boolean {
+        if (!graph) {
+            return;
+        }
         if (graph.isHistoryEnabled()) {
             graph.disableHistory();
         } else {
@@ -220,24 +229,27 @@ namespace CustomComponent {
     }
 
     export function undo() {
-        if (graph) {
-            graph.undo();
+        if (!graph) {
+            return;
         }
+        graph.undo();
     }
 
     export function redo() {
-        if (graph) {
-            graph.redo();
+        if (!graph) {
+            return;
         }
+        graph.redo();
     }
 
     export function resetGraph(nodes = null) {
-        if (graph) {
-            if (!nodes) {
-                graph.clearCells({ silent: false });
-            } else {
-                graph.resetCells(nodes, { silent: false });
-            }
+        if (!graph) {
+            return;
+        }
+        if (!nodes) {
+            graph.clearCells({ silent: false });
+        } else {
+            graph.resetCells(nodes, { silent: false });
         }
     }
 

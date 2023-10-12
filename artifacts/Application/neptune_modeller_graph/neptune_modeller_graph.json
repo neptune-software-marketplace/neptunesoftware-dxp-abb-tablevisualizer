@@ -7,6 +7,18 @@
 			"fieldNo": 99999,
 			"data": [
 				{
+					"fieldNo": "68759fa8-ee56-415d-bdc4-9b1b58ae7f02",
+					"fieldName": "graphScript",
+					"fieldParent": 99999,
+					"fieldType": "neptune_modeller_script",
+					"script": "",
+					"customComponent": true,
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": []
+				},
+				{
 					"fieldNo": "d3c34991-e253-4fcb-b96f-a9530e6a13be",
 					"fieldName": "namespace",
 					"fieldParent": 99999,
@@ -52,7 +64,7 @@
 		"attributes": [],
 		"topLevelObjects": []
 	},
-	"ver": "23.8.25.1219",
+	"ver": "23.10.12.136",
 	"application": "neptune_modeller_graph",
 	"title": "",
 	"description": "",

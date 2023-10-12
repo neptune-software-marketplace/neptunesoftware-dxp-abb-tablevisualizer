@@ -279,10 +279,10 @@
 									],
 									"data": [
 										{
-											"fieldNo": "da60132c-e66f-4e94-86da-18d1a3d67ab6",
-											"fieldName": "butMenuToggleSide",
+											"fieldNo": "5d8df2d2-420a-4c91-8f8c-e010f02bfcbe",
+											"fieldName": "labelSwitchFullscreen",
 											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
-											"fieldType": "sap.m.ToggleButton",
+											"fieldType": "sap.m.Label",
 											"script": "",
 											"customComponent": false,
 											"request": [],
@@ -291,37 +291,35 @@
 												{
 													"attribute": "text",
 													"grouping": "Properties",
-													"value": "Models",
+													"value": "Fullscreen",
 													"script": "",
 													"translation": []
-												},
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "c4928d50-ee19-4a07-821d-5e61548d8005",
+											"fieldName": "switchFullscreen",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.Switch",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
 												{
-													"attribute": "pressed",
-													"grouping": "Properties",
-													"value": "true",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "iconFirst",
+													"attribute": "state",
 													"grouping": "Properties",
 													"value": "false",
 													"script": "",
 													"translation": []
 												},
 												{
-													"attribute": "icon",
-													"grouping": "Properties",
-													"value": "sap-icon://navigation-up-arrow",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "press",
+													"attribute": "change",
 													"grouping": "Events",
 													"value": "Anonymous Function",
-													"script": "file://event/sap.m.ToggleButton/butMenuToggleSide/press.js",
-													"language": "javascript",
+													"script": "file://event/sap.m.Switch/switchFullscreen/change.script",
 													"translation": []
 												}
 											],
@@ -371,6 +369,75 @@
 											"request": [],
 											"response": [],
 											"attributes": [],
+											"data": []
+										},
+										{
+											"fieldNo": "52b60f36-90e8-4bf5-afaf-1e69e9380d29",
+											"fieldName": "btnZoomIn",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://zoom-in",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "Anonymous Function",
+													"script": "tableModeller.zoomIn();",
+													"translation": []
+												}
+											],
+											"data": []
+										},
+										{
+											"fieldNo": "58d2b704-c79c-4a9a-ea03-96a46dd98f43",
+											"fieldName": "btnZoomOut",
+											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
+											"fieldType": "sap.m.Button",
+											"script": "",
+											"customComponent": false,
+											"request": [],
+											"response": [],
+											"attributes": [
+												{
+													"attribute": "type",
+													"grouping": "Properties",
+													"value": "Transparent",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "icon",
+													"grouping": "Properties",
+													"value": "sap-icon://zoom-out",
+													"script": "",
+													"translation": []
+												},
+												{
+													"attribute": "press",
+													"grouping": "Events",
+													"value": "tableModeller.zoomOut();",
+													"script": "tableModeller.zoomOut();",
+													"language": "javascript",
+													"translation": []
+												}
+											],
 											"data": []
 										},
 										{
@@ -2602,7 +2669,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.9.22.954",
+	"ver": "23.10.12.1332",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",

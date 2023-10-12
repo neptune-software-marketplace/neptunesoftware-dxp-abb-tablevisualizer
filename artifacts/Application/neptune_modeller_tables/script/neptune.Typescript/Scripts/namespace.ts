@@ -170,6 +170,13 @@ namespace CustomComponent {
         return graph.getEdges();
     }
 
+    export function zoomOut() {
+        graphCore.zoomOut()
+    }
+    export function zoomIn() {
+        graphCore.zoomIn()
+    }
+
     export function addEventListeners() {
         graph.on("edge:connected", ({ edge }) => {
             const variantEdge = graphConfig.edgeConfig.find((edge) => edge.name === "variant");
