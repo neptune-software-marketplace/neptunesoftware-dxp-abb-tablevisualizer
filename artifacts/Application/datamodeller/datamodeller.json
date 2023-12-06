@@ -309,13 +309,6 @@
 											"response": [],
 											"attributes": [
 												{
-													"attribute": "state",
-													"grouping": "Properties",
-													"value": "false",
-													"script": "",
-													"translation": []
-												},
-												{
 													"attribute": "change",
 													"grouping": "Events",
 													"value": "Anonymous Function",
@@ -352,8 +345,9 @@
 												{
 													"attribute": "press",
 													"grouping": "Events",
-													"value": "getTableData();",
-													"script": "getTableData();",
+													"value": "Anonymous Function",
+													"script": "file://event/sap.m.Button/btnUpdate/press.js",
+													"language": "javascript",
 													"translation": []
 												}
 											],
@@ -434,7 +428,6 @@
 													"grouping": "Events",
 													"value": "tableModeller.zoomOut();",
 													"script": "tableModeller.zoomOut();",
-													"language": "javascript",
 													"translation": []
 												}
 											],
@@ -2669,7 +2662,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.10.12.1332",
+	"ver": "23.12.6.1338",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",

@@ -41,8 +41,6 @@ namespace CustomComponent {
             destroy();
         }
 
-        graphConfig.connectionConfig;
-
         graph = new Graph({
             container: containerDiv,
             connecting: {
