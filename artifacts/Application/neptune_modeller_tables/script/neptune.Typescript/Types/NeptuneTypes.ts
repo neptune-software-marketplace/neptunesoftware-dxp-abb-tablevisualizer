@@ -49,6 +49,7 @@ interface NeptuneTable {
     enableAudit: boolean;
     includeDataInPackage: boolean;
     package: string | null;
+    packageName?: string;
     rolesRead: any[];
     rolesWrite: any[];
 }

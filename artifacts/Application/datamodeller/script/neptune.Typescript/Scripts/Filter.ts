@@ -20,7 +20,7 @@ function filterTables() {
                         searchValue
                     ),
                     new sap.ui.model.Filter(
-                        "createdBy",
+                        "packageName",
                         sap.ui.model.FilterOperator.Contains,
                         searchValue
                     ),

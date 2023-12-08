@@ -1,0 +1,5 @@
+const context = oEvent.oSource.getBindingContext("tableModeller_AllTables");
+
+const data = context.getObject();
+modelpopTableInfo.setData(data);
+popTableInfo.openBy(this);

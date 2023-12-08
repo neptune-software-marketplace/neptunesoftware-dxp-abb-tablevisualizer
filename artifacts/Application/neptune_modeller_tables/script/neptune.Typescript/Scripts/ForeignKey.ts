@@ -40,10 +40,11 @@ namespace ForeignKey {
         fromTableCol: NeptuneTableColumn
     ) {
         const updatedForeignKeys = tableData.foreignKeys.filter((key) => {
+            if (key.id !== edgeData.foreignKeyId) {
+                return true;
+            }
             const columnIds = key.columns.map((col) => col.referencedColumnId);
-            return (
-                key.id !== edgeData.foreignKeyId && !columnIds.includes(fromTableCol.id)
-            );
+            return !columnIds.includes(fromTableCol.id);
         });
 
         return { ...tableData, foreignKeys: [...updatedForeignKeys] };

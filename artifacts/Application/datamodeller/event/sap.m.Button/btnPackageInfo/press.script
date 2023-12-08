@@ -1,0 +1,9 @@
+const context = oEvent.oSource.getBindingContext();
+
+if (!context) {
+    return;
+}
+
+const selectedPackage = context.getObject();
+modelpopTableInfo.setData(selectedPackage);
+popTableInfo.openBy(this);

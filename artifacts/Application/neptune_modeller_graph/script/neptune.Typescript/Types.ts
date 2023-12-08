@@ -21,4 +21,5 @@ interface GraphConfig {
         padding?: number;
         graphOptions?: {};
     };
+    graph?: {}
 }

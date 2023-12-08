@@ -6,11 +6,13 @@ namespace Tables {
         const allPackages = data.package;
 
         allTables
-            .filter((table) => allPackages.some((package) => package.id === table.package))
             .forEach((table) => {
                 const package = allPackages.find((package) => package.id === table.package);
-                package.tables = package.tables || [];
-                package.tables.push(table);
+                if (package) {
+                    table.packageName = package.name;
+                    package.tables = package.tables || [];
+                    package.tables.push(table);
+                }
             });
 
         const packagesWithTables = allPackages

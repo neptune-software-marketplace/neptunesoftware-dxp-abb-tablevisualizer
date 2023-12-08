@@ -3,24 +3,25 @@ namespace Convert {
         return "ports" in obj && "position" in obj;
     };
 
+    function getPosition(index) {
+        const groupIndex = Math.floor(index / 5);
+        const y = groupIndex * 300;
+        const x = (index % 5) * 350;
+        return { x, y };
+    }
+
     export function toX6(tableArray: NeptuneTable[]) {
         let formattedData: (X6Table | X6TableForeignKey)[] = [];
 
         tableArray.forEach((table, index) => {
             let formattedTable = {} as X6Table;
 
-            const positionX = index === 0 ? 300 : 300 * (index + 1);
-            const positionY = index === 0 ? 0 : 100 * (index + 1);
-
             formattedTable.id = table.id;
             formattedTable.shape = "tableNode";
             formattedTable.label = table.name;
             formattedTable.width = Configuration.NODE_WIDTH;
             formattedTable.height = Configuration.LINE_HEIGHT;
-            formattedTable.position = {
-                x: positionX,
-                y: positionY,
-            };
+            formattedTable.position = getPosition(index);
 
             formattedTable.attrs = {
                 body: {
