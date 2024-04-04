@@ -5,5 +5,6 @@
 	"name": "neptunesoftware-datamodeller",
 	"description": null,
 	"ver": "23.6.20.102",
-	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
+	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7",
+	"acl": []
 }

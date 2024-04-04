@@ -1895,7 +1895,6 @@
 																			"grouping": "Events",
 																			"value": "treeTablePackages.expandToLevel(99);",
 																			"script": "treeTablePackages.expandToLevel(99);",
-																			"language": "javascript",
 																			"translation": []
 																		}
 																	],
@@ -1930,7 +1929,6 @@
 																			"grouping": "Events",
 																			"value": "treeTablePackages.collapseAll();",
 																			"script": "treeTablePackages.collapseAll();",
-																			"language": "javascript",
 																			"translation": []
 																		}
 																	],
@@ -2841,13 +2839,6 @@
 											"response": [],
 											"attributes": [
 												{
-													"attribute": "wrapping",
-													"grouping": "Properties",
-													"value": "true",
-													"script": "",
-													"translation": []
-												},
-												{
 													"attribute": "visible",
 													"grouping": "Properties",
 													"value": "{= !!${/description}}",
@@ -3225,7 +3216,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "23.12.8.1518",
+	"ver": "24.04.04.0911",
 	"application": "datamodeller",
 	"title": "",
 	"description": "",
