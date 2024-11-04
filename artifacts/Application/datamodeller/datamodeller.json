@@ -374,134 +374,6 @@
 											"data": []
 										},
 										{
-											"fieldNo": "d49d5c7f-3689-4e4f-8b72-a2ba9452e404",
-											"fieldName": "btnUndo",
-											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
-											"fieldType": "sap.m.Button",
-											"script": "",
-											"customComponent": false,
-											"disabled": true,
-											"request": [],
-											"response": [],
-											"attributes": [
-												{
-													"attribute": "type",
-													"grouping": "Properties",
-													"value": "Transparent",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "icon",
-													"grouping": "Properties",
-													"value": "sap-icon://undo",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "enabled",
-													"grouping": "Properties",
-													"value": "false",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "press",
-													"grouping": "Events",
-													"value": "Anonymous Function",
-													"script": "tableModeller.undo();",
-													"language": "javascript",
-													"translation": []
-												}
-											],
-											"data": []
-										},
-										{
-											"fieldNo": "977808b8-011f-4550-9678-13d72d3b1f2d",
-											"fieldName": "btnRedo",
-											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
-											"fieldType": "sap.m.Button",
-											"script": "",
-											"customComponent": false,
-											"disabled": true,
-											"request": [],
-											"response": [],
-											"attributes": [
-												{
-													"attribute": "type",
-													"grouping": "Properties",
-													"value": "Transparent",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "icon",
-													"grouping": "Properties",
-													"value": "sap-icon://redo",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "enabled",
-													"grouping": "Properties",
-													"value": "false",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "press",
-													"grouping": "Events",
-													"value": "Anonymous Function",
-													"script": "tableModeller.redo();",
-													"language": "javascript",
-													"translation": []
-												}
-											],
-											"data": []
-										},
-										{
-											"fieldNo": "a3dddba6-f75e-4a75-95c6-bad1fdbd317d",
-											"fieldName": "btnRefresh",
-											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
-											"fieldType": "sap.m.Button",
-											"script": "",
-											"customComponent": false,
-											"disabled": true,
-											"request": [],
-											"response": [],
-											"attributes": [
-												{
-													"attribute": "type",
-													"grouping": "Properties",
-													"value": "Transparent",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "text",
-													"grouping": "Properties",
-													"value": "Reset view",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "icon",
-													"grouping": "Properties",
-													"value": "sap-icon://refresh",
-													"script": "",
-													"translation": []
-												},
-												{
-													"attribute": "press",
-													"grouping": "Events",
-													"value": "Anonymous Function",
-													"script": "file://event/sap.m.Button/btnRefresh/press.script",
-													"translation": []
-												}
-											],
-											"data": []
-										},
-										{
 											"fieldNo": "b3485541-6e1a-4be4-b9be-27f3486c31a0",
 											"fieldName": "btnClearGraph",
 											"fieldParent": "da614357-78ad-4265-8f8b-257336dd4d58",
@@ -2369,7 +2241,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "file:///css.css",
-	"compiledCss": "file://script/undefined/undefined.script",
+	"compiledCss": "file:///compiledCss.css",
 	"header": "",
 	"manifest": "",
 	"globalScript": null,
@@ -2383,6 +2255,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
-	"apis": [],
-	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
+	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7",
+	"apis": []
 }

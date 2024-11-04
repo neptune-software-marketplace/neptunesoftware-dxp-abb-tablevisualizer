@@ -86,7 +86,7 @@ namespace TableModeller {
         });
         // Add connections
         tableArray.forEach((table) => {
-            if (table.foreignKeys.length) {
+            if (table?.foreignKeys?.length) {
                 table.foreignKeys.forEach((key, index) => {
                     for (let i = 0; i < key.columns.length; i++) {
                         let formattedLink = {} as X6TableForeignKey;

@@ -1,19 +1,18 @@
 namespace Tables {
     export async function listTablesPackages() {
-        const data = await getTableList();
+        let tableData = await getTableList();
+        let packageData = await getPackageList();
 
-        const allTables: NeptuneTable[] = data.dictionary;
-        const allPackages = data.package;
 
-        allTables
-            .filter((table) => allPackages.some((package) => package.id === table.package))
+        tableData
+            .filter((table) => packageData.some((package) => package.id === table.package))
             .forEach((table) => {
-                const package = allPackages.find((package) => package.id === table.package);
+                const package = packageData.find((package) => package.id === table.package);
                 package.tables = package.tables || [];
                 package.tables.push(table);
             });
 
-        const packagesWithTables = allPackages
+        const packagesWithTables = packageData
             .filter((x) => x.tables)
             .sort((a, b) => {
                 let ta = a.name.toLowerCase(),
@@ -28,9 +27,9 @@ namespace Tables {
                 return 0;
             });
 
-        modelAllTables.setData(allTables);
+        modelAllTables.setData(tableData);
         modelAllPackages.setData(packagesWithTables);
-        return { allTables, packagesWithTables };
+        return { tableData, packagesWithTables };
     }
 
     export function sort(column: string, table, descending = true) {
@@ -69,7 +68,7 @@ namespace Tables {
             });
         });
 
-        const nestedTree = { children: _convertFlatToNested(treeData, "id", "parent") };
+        const nestedTree = { children: neptune.Utils.convertFlatToNested(treeData, "id", "parent") };
         return nestedTree;
     }
 }

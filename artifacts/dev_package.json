@@ -9,8 +9,12 @@
 	},
 	"name": "neptunesoftware-dxp-abb-datamodeller",
 	"description": null,
-	"ver": "23.6.20.1010",
+	"ver": "24.11.04.0953",
 	"enableCICD": true,
+	"internalReadOnly": false,
+	"oeVersion": null,
+	"excludeTemplateFiles": false,
+	"roles": [],
 	"apps": [
 		{
 			"id": "c8dd3176-877f-48de-aaa1-925681c5a730",
@@ -56,8 +60,11 @@
 			"name": "DataModeller"
 		}
 	],
+	"tile_layout": [],
 	"category": [],
+	"tilegroup_layout": [],
 	"launchpad": [],
+	"launchpad_layout": [],
 	"certificates": [],
 	"role": [
 		{
@@ -74,16 +81,8 @@
 	"wf_definition": [],
 	"connector": [],
 	"events": [],
-	"media_library": [
-		{
-			"id": "323d04d7-6a58-460a-991f-6527bcbd7fef",
-			"updatedAt": "2023-06-26T11:14:31.735Z",
-			"name": "datamodeller",
-			"parent": null,
-			"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
-		}
-	],
 	"code_snippets": [],
 	"wf_determination": [],
-	"wf_taskaction": []
+	"wf_taskaction": [],
+	"theme_ui5": []
 }

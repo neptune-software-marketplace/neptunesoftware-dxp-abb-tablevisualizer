@@ -1,3 +1,0 @@
-if (tableModeller.hasSelection()) {
-    tableModeller.refreshSelection();
-}

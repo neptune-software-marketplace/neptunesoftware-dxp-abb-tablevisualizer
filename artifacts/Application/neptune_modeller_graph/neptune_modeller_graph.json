@@ -89,7 +89,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "",
-	"compiledCss": "file://script/undefined/undefined.script",
+	"compiledCss": "file:///compiledCss.css",
 	"header": "<script src=\"https://unpkg.com/@antv/x6@1.7/dist/x6.js\"></script>",
 	"manifest": "",
 	"globalScript": null,
@@ -103,6 +103,8 @@
 	"compilerTarget": 3,
 	"tabWidth": null,
 	"printWidth": null,
-	"apis": [],
-	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7"
+	"generateVersionOnActivation": false,
+	"activationHistoryCount": 0,
+	"package": "405a932e-033f-ed11-a27c-a04a5ebc99b7",
+	"apis": []
 }
